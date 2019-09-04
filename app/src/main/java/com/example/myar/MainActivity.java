@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             Anchor anchor = hitResult.createAnchor();
 
               ModelRenderable.builder()
-                    .setSource(this, Uri.parse("Knife_01.sfb"))
+                    .setSource(this, Uri.parse("ArcticFox_Posed.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(anchor, modelRenderable))
                     .exceptionally(throwable -> {

@@ -34,10 +34,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-
-
-
-sceneform.asset('sampledata/ArcticFox_Posed.obj',
-        'default',
-        'sampledata/ArcticFox_Posed.sfa',
-        'src/main/assets/ArcticFox_Posed')
+apply plugin: 'com.google.ar.sceneform.plugin'
