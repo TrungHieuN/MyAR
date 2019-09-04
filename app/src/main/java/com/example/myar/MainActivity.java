@@ -32,19 +32,6 @@ public class MainActivity extends AppCompatActivity {
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
 
-
-           /* MaterialFactory.makeOpaqueWithColor(this, new Color(android.graphics.Color.RED))
-                    .thenAccept(material -> {
-                        ModelRenderable renderable = ShapeFactory.makeSphere(1.0f, new Vector3(0f, 1f, 1f), material);
-
-                        AnchorNode anchorNode = new AnchorNode(anchor);
-                        anchorNode.setRenderable(renderable);
-                        arFragment.getArSceneView().getScene().addChild(anchorNode);
-                    });
-        });
-    }
-}*/
-
               ModelRenderable.builder()
                     .setSource(this, Uri.parse("Knife_01.sfb"))
                     .build()
