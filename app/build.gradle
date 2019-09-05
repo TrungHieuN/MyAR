@@ -35,7 +35,8 @@ dependencies {
 }
 
 
-sceneform.asset('sampledata/Knife_01.obj',
+
+sceneform.asset('sampledata/ArcticFox_Posed.obj',
         'default',
-        'sampledata/Knife_01.sfa',
-        'src/main/assets/Knife_01')
+        'sampledata/ArcticFox_Posed.sfa',
+        'src/main/assets/ArcticFox_Posed')
