@@ -39,7 +39,6 @@ dependencies {
 }
 
 
-
 sceneform.asset('sampledata/ArcticFox_Posed.obj',
         'default',
         'sampledata/ArcticFox_Posed.sfa',

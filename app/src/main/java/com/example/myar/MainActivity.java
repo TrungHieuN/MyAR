@@ -10,6 +10,8 @@ import android.os.SharedMemory;
 import android.view.Display;
 
 import com.google.ar.core.Anchor;
+import com.google.ar.core.Config;
+import com.google.ar.core.Session;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.MaterialFactory;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
 
@@ -44,13 +47,17 @@ public class MainActivity extends AppCompatActivity {
                     });
         });
     }
-
+    protected Config getSessionConfiguration(Session session) {
+        Config config = super.getSessionConfiguration(session);
+        config.setPlaneFindingMode(Config.PlaneFindingMode.HORIZONTAL_AND_VERTICAL);
+        return config;
+    }
     private void addModelToScene(Anchor anchor, ModelRenderable modelRenderable) {
-        AnchorNode anchorNode = new AnchorNode(anchor);
-        TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
-        transformableNode.setParent(anchorNode);
-        transformableNode.setRenderable(modelRenderable);
-        arFragment.getArSceneView().getScene().addChild(anchorNode);
+            AnchorNode anchorNode = new AnchorNode(anchor);
+            TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
+            transformableNode.setParent(anchorNode);
+            transformableNode.setRenderable(modelRenderable);
+            arFragment.getArSceneView().getScene().addChild(anchorNode);
         transformableNode.select();
     }
 }
