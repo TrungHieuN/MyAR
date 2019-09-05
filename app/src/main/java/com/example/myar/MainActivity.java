@@ -20,20 +20,20 @@ import com.google.ar.sceneform.ux.TransformableNode;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArFragment arFragment;
+  //  private ArFragment arFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        //arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        ArFragment arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
 
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
 
-
-           /* MaterialFactory.makeOpaqueWithColor(this, new Color(android.graphics.Color.RED))
+              MaterialFactory.makeOpaqueWithColor(this, new Color(android.graphics.Color.RED))
                     .thenAccept(material -> {
                         ModelRenderable renderable = ShapeFactory.makeSphere(1.0f, new Vector3(0f, 1f, 1f), material);
 
@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
                     });
         });
     }
-}*/
+}
 
-              ModelRenderable.builder()
-                    .setSource(this, Uri.parse("Knife_01.sfb"))
+          /*   ModelRenderable.builder()
+                    .setSource(this, Uri.parse("ArcticFox_Posed.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(anchor, modelRenderable))
                     .exceptionally(throwable -> {
@@ -66,4 +66,4 @@ public class MainActivity extends AppCompatActivity {
         arFragment.getArSceneView().getScene().addChild(anchorNode);
         transformableNode.select();
     }
-}
+}*/
