@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     .thenAccept(modelRenderable -> addModelToScene(anchor, modelRenderable, planeType))
                     .exceptionally(throwable -> {
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                        builder.setMessage(throwable.getMessage())
-                                .show();
+                        builder.setMessage("Error" + throwable.getMessage()).show();
                         return null;
                     });
         });
