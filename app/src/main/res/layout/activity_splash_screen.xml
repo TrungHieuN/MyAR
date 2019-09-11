@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAppBackground"
-
     tools:context=".SplashScreen">
+
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
@@ -32,6 +32,5 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
 
 </RelativeLayout>
