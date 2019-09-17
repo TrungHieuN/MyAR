@@ -7,10 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="137dp"
+        android:layout_height="66dp"
+        android:text="Clear"
+        android:textSize="45px"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        />
+
     <fragment
         android:id="@+id/arFragment"
         android:name="com.google.ar.sceneform.ux.ArFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

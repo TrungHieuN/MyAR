@@ -1,24 +1,26 @@
 package com.example.myar;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MotionEvent;
+
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.ar.core.Config;
-import com.google.ar.core.Pose;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.Frame;
 import com.google.ar.core.HitResult;
 import com.google.ar.core.Plane;
 
+import com.google.ar.core.Pose;
 import com.google.ar.core.Trackable;
 import com.google.ar.sceneform.AnchorNode;
+import com.google.ar.sceneform.Camera;
 import com.google.ar.sceneform.Node;
+import com.google.ar.sceneform.Sun;
 import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
@@ -28,25 +30,24 @@ import com.google.ar.sceneform.ux.TransformableNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private ArFragment arFragment;
     public Plane.Type planeType;
     private Anchor anchor;
-    private AnchorNode anchorNode;
-    private TransformableNode transformableNode;
-    private ModelRenderable modelRenderable;
-    private float scale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button button = findViewById(R.id.clearButton);
+        button.setOnClickListener(view -> onClear());
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
 
-        arFragment.setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
+        Objects.requireNonNull(arFragment).setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
 
          //Renderable mode in AR app
 
@@ -65,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void addModelToScene(ModelRenderable modelRenderable, HitResult hitResult, Plane.Type planeType) {
         anchor = hitResult.createAnchor();
-        anchorNode = new AnchorNode(anchor);
+        AnchorNode anchorNode = new AnchorNode(anchor);
         anchorNode.setParent(arFragment.getArSceneView().getScene());
-        transformableNode = new TransformableNode(arFragment.getTransformationSystem());
+        TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
         transformableNode.setParent(anchorNode);
         transformableNode.select();
         arFragment.getArSceneView().getScene().addChild(anchorNode);
@@ -89,7 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-  /*  private MotionEvent getNewTapOnBottomCloud(MotionEvent tap, Frame frame) {
+
+    @SuppressWarnings("unused")
+    private MotionEvent getNewTapOnBottomCloud(MotionEvent tap, Frame frame) {
         if (tap == null) {
             return null;
         }
@@ -97,9 +100,8 @@ public class MainActivity extends AppCompatActivity {
             for (HitResult hitResult : frame.hitTest(tap)) {
                 Trackable trackable = hitResult.getTrackable();
                 if (trackable instanceof Plane && ((Plane) trackable).isPoseInPolygon(hitResult.getHitPose()) && ((Plane) trackable).getType() == Plane.Type.HORIZONTAL_UPWARD_FACING) {
-                    float distance = Pose.makeRotation(hitResult.getHitPose(), arFragment.getArSceneView().getArFrame().getCamera().getPose());
 
-                    scale = distance;
+                    float distance = PlaneRenderer.class(hitResult.getHitPose(), Objects.requireNonNull(arFragment.getArSceneView().getArFrame()).getCamera().getPose());
                     anchor = hitResult.createAnchor();
                     ModelRenderable.builder()
                             .setSource(this, Uri.parse("ArcticFox_Posed.sfb"))
@@ -119,35 +121,20 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return tap;
-    }    */
+    }
 
-    private void setNewAnchor(Anchor newAnchor) {
-        AnchorNode newAnchorNode = null;
 
-        if (anchorNode != null && newAnchor != null) {
-            // Create a new anchor node and move the children over.
-            newAnchorNode = new AnchorNode(newAnchor);
-            newAnchorNode.setParent(arFragment.getArSceneView().getScene());
-            List<Node> children = new ArrayList<>(anchorNode.getChildren());
-            for (Node child : children) {
-                child.setParent(newAnchorNode);
+    private void onClear() {
+        List<Node> children = new ArrayList<>(arFragment.getArSceneView().getScene().getChildren());
+        for (Node node : children) {
+            if (node instanceof AnchorNode) {
+                if (((AnchorNode) node).getAnchor() != null) {
+                    Objects.requireNonNull(((AnchorNode) node).getAnchor()).detach();
+                }
             }
-        } else if (anchorNode == null && newAnchor != null) {
-            // First anchor node created, add Andy as a child.
-            newAnchorNode = new AnchorNode(newAnchor);
-            newAnchorNode.setParent(arFragment.getArSceneView().getScene());
-
-            Node andy = new Node();
-            andy.setRenderable(modelRenderable);
-            andy.setParent(newAnchorNode);
-        } else {
-            // Just clean up the anchor node.
-            if (anchorNode != null && anchorNode.getAnchor() != null) {
-                anchorNode.getAnchor().detach();
-                anchorNode.setParent(null);
-                anchorNode = null;
+            if (!(node instanceof Camera) && !(node instanceof Sun)) {
+                node.setParent(null);
             }
         }
-        anchorNode = newAnchorNode;
     }
 }
