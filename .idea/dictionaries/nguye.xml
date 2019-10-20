@@ -2,6 +2,7 @@
   <dictionary name="nguye">
     <words>
       <w>renderable</w>
+      <w>toremove</w>
     </words>
   </dictionary>
 </component>
