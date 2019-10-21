@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         Button clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener(view -> onClear());
 
-        Button deleteButton = findViewById(R.id.deleteButton);
-        deleteButton.setOnClickListener(view -> removeAnchorNode());
+     /*   Button deleteButton = findViewById(R.id.deleteButton);
+        deleteButton.setOnClickListener(view -> removeAnchorNode()); */
     }
 
     private void addModelToScene(ModelRenderable modelRenderable, HitResult hitResult, Plane.Type planeType) {
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-     private void removeAnchorNode(AnchorNode anchorNode, Anchor newAnchor) {
+  /*   private void removeAnchorNode(AnchorNode anchorNode, Anchor newAnchor) {
          AnchorNode newAnchorNode = null;
 
          if (anchorNode != null && newAnchor != null) {
@@ -130,6 +130,6 @@ public class MainActivity extends AppCompatActivity {
                  anchorNode.setParent(null);
              }
          }
-     }
+     } */
 
 }
