@@ -1,8 +1,12 @@
 package com.example.myar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
 
 import android.net.Uri;
+
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -10,6 +14,10 @@ import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.myar.ui.main.SectionsPagerAdapter;
+
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 import com.google.ar.core.Anchor;
 
 import com.google.ar.core.HitResult;
@@ -41,8 +49,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(getResources().getString(R.string.app_name));
+        setSupportActionBar(toolbar);;
 
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), 2);
+
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
+        TabLayout tablayout = findViewById(R.id.tablayout);
+        TabItem tabProduct = findViewById(R.id.tabProduct);
+        TabItem tabAccount = findViewById(R.id.tabAccount);
+        tablayout.setupWithViewPager(viewPager);
+
+
+        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
         Objects.requireNonNull(arFragment).setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
 
             //Renderable mode in AR app
@@ -58,11 +79,47 @@ public class MainActivity extends AppCompatActivity {
                         return null;
                     });
         });
+
         Button clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener(view -> onClear());
 
-        Button deleteButton = findViewById(R.id.deleteButton);
-        deleteButton.setOnClickListener(view -> removeAnchorNode());
+     /*   Button deleteButton = findViewById(R.id.deleteButton);
+        deleteButton.setOnClickListener(view -> removeAnchorNode()); */
+
+        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+                if (tab.getPosition() == 1) {
+                    toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
+                            R.color.colorAccent));
+                    tablayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
+                            R.color.colorAccent));
+                    getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
+                            R.color.colorAccent));
+
+                } else {
+                    toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
+                            R.color.colorPrimary));
+                    tablayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
+                            R.color.colorPrimary));
+                    getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
+                            R.color.colorPrimaryDark));
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
+
     }
 
     private void addModelToScene(ModelRenderable modelRenderable, HitResult hitResult, Plane.Type planeType) {
@@ -103,33 +160,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-     private void removeAnchorNode(AnchorNode anchorNode, Anchor newAnchor) {
-         AnchorNode newAnchorNode = null;
-
-         if (anchorNode != null && newAnchor != null) {
-             // Create a new anchor node and move the children over.
-             newAnchorNode = new AnchorNode(newAnchor);
-             newAnchorNode.setParent(arFragment.getArSceneView().getScene());
-             List<Node> children = new ArrayList<>(anchorNode.getChildren());
-             for (Node child : children) {
-                 child.setParent(newAnchorNode);
-             }
-         } else if (anchorNode == null && newAnchor != null) {
-             // First anchor node created, add Andy as a child.
-             newAnchorNode = new AnchorNode(newAnchor);
-             newAnchorNode.setParent(arFragment.getArSceneView().getScene());
-
-             Node andy = new Node();
-             andy.setRenderable(modelRenderable);
-             andy.setParent(newAnchorNode);
-         } else {
-             // Just clean up the anchor node.
-             if (anchorNode != null && anchorNode.getAnchor() != null) {
-                 anchorNode.getAnchor().detach();
-                 anchorNode.setParent(null);
-             }
-         }
-     }
 
 }
