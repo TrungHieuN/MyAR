@@ -33,11 +33,19 @@ dependencies {
     api 'com.google.ar:core:1.13.0'
     api 'com.google.ar.sceneform:core:1.13.0'
 
+<<<<<<< HEAD
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation 'com.android.support:appcompat-v7:29.0.0'
+=======
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+>>>>>>> 8357c0f5070d28602483286534a889137b1e3873
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
