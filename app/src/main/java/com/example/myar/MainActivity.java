@@ -14,8 +14,6 @@ import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.myar.ui.main.SectionsPagerAdapter;
-
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.ar.core.Anchor;
@@ -90,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
 
      /*   Button deleteButton = findViewById(R.id.deleteButton);
         deleteButton.setOnClickListener(view -> removeAnchorNode()); */
-<<<<<<< HEAD
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -126,8 +123,6 @@ public class MainActivity extends AppCompatActivity {
         });
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-=======
->>>>>>> 8357c0f5070d28602483286534a889137b1e3873
     }
 
     private void addModelToScene(ModelRenderable modelRenderable, HitResult hitResult, Plane.Type planeType) {
@@ -168,36 +163,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-<<<<<<< HEAD
-=======
-
-  /*   private void removeAnchorNode(AnchorNode anchorNode, Anchor newAnchor) {
-         AnchorNode newAnchorNode = null;
-
-         if (anchorNode != null && newAnchor != null) {
-             // Create a new anchor node and move the children over.
-             newAnchorNode = new AnchorNode(newAnchor);
-             newAnchorNode.setParent(arFragment.getArSceneView().getScene());
-             List<Node> children = new ArrayList<>(anchorNode.getChildren());
-             for (Node child : children) {
-                 child.setParent(newAnchorNode);
-             }
-         } else if (anchorNode == null && newAnchor != null) {
-             // First anchor node created, add Andy as a child.
-             newAnchorNode = new AnchorNode(newAnchor);
-             newAnchorNode.setParent(arFragment.getArSceneView().getScene());
-
-             Node andy = new Node();
-             andy.setRenderable(modelRenderable);
-             andy.setParent(newAnchorNode);
-         } else {
-             // Just clean up the anchor node.
-             if (anchorNode != null && anchorNode.getAnchor() != null) {
-                 anchorNode.getAnchor().detach();
-                 anchorNode.setParent(null);
-             }
-         }
-     } */
-
->>>>>>> 8357c0f5070d28602483286534a889137b1e3873
 }

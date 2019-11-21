@@ -1,4 +1,4 @@
-package com.example.myar.ui.main;
+package com.example.myar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

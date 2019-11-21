@@ -15,17 +15,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-<<<<<<< HEAD
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-=======
-        android:theme="@style/AppTheme">
-        <activity
-            android:name=".NavDrawer"
-            android:label="@string/title_activity_nav_drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
->>>>>>> 8357c0f5070d28602483286534a889137b1e3873
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,15 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
 
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
         </activity>
-=======
-        <activity android:name=".MainActivity" />
->>>>>>> 8357c0f5070d28602483286534a889137b1e3873
 
         <meta-data
             android:name="com.google.ar.core"
