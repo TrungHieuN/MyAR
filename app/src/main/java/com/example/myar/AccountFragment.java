@@ -17,7 +17,7 @@ public class AccountFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_main2, container, false);
+        return inflater.inflate(R.layout.account_fragment, container, false);
     }
 
     @Override

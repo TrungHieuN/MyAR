@@ -50,21 +50,6 @@
         </com.google.android.material.tabs.TabLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <RelativeLayout
-        android:id="@+id/itemlayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/plantlists"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            app:layout_anchorGravity="center">
-
-        </android.support.v7.widget.RecyclerView>
-    </RelativeLayout>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"

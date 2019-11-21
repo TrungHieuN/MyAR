@@ -42,29 +42,34 @@ public class MainActivity extends AppCompatActivity {
 
     private ArFragment arFragment;
     public Plane.Type planeType;
-    private ModelRenderable modelRenderable;
+
+    Toolbar toolbar;
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    SectionsPagerAdapter sectionsPagerAdapter;
+    TabItem tabProduct;
+    TabItem tabAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.app_name));
-        setSupportActionBar(toolbar);;
+        setSupportActionBar(toolbar);
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), 2);
+        sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
 
-        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tablayout = findViewById(R.id.tablayout);
-        TabItem tabProduct = findViewById(R.id.tabProduct);
-        TabItem tabAccount = findViewById(R.id.tabAccount);
-        tablayout.setupWithViewPager(viewPager);
 
+        tabLayout = findViewById(R.id.tablayout);
+        tabProduct = findViewById(R.id.tabProduct);
+        tabAccount = findViewById(R.id.tabAccount);
 
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
-        Objects.requireNonNull(arFragment).setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
+        arFragment.setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
 
             //Renderable mode in AR app
 
@@ -86,23 +91,23 @@ public class MainActivity extends AppCompatActivity {
      /*   Button deleteButton = findViewById(R.id.deleteButton);
         deleteButton.setOnClickListener(view -> removeAnchorNode()); */
 
-        tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition() == 1) {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
                             R.color.colorAccent));
-                    tablayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
+                    tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
                             R.color.colorAccent));
                     getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
                             R.color.colorAccent));
 
                 } else {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorPrimary));
-                    tablayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorPrimary));
+                            R.color.colorPrimaryDark));
+                    tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
+                            R.color.colorPrimaryDark));
                     getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
                             R.color.colorPrimaryDark));
                 }
@@ -118,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
 
@@ -160,5 +165,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 }
