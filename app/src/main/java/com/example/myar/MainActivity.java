@@ -1,5 +1,6 @@
 package com.example.myar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -57,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle(getResources().getString(R.string.app_name));
         setSupportActionBar(toolbar);
 
-        sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-
-        viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
-
-        tabLayout = findViewById(R.id.tablayout);
+        tabLayout = findViewById(R.id.tabLayout);
         tabProduct = findViewById(R.id.tabProduct);
         tabAccount = findViewById(R.id.tabAccount);
+        viewPager = findViewById(R.id.view_pager);
+
+        sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(sectionsPagerAdapter);
+
 
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
         arFragment.setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {

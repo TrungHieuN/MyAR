@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.myar.AccountFragment;
-import com.example.myar.ProductFragment;
 
 
 /**
@@ -16,7 +14,7 @@ import com.example.myar.ProductFragment;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
     private int numOfTabs;
 
-    public SectionsPagerAdapter(FragmentManager fm, int numOfTabs) {
+    SectionsPagerAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
         this.numOfTabs = numOfTabs;
     }
