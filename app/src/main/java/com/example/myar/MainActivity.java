@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         tabProduct = findViewById(R.id.tabProduct);
         tabAccount = findViewById(R.id.tabAccount);
-        viewPager = findViewById(R.id.view_pager);
+        viewPager = findViewById(R.id.viewPager);
 
         sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(sectionsPagerAdapter);
@@ -97,11 +97,11 @@ public class MainActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition() == 1) {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAccent));
+                            R.color.colorAppBackground));
                     tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAccent));
+                            R.color.colorAppBackground));
                     getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAccent));
+                            R.color.colorAppBackground));
 
                 } else {
                     toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
