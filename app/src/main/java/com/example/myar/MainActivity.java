@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(sectionsPagerAdapter);
 
-
-        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        arFragment = new ArFragment();
         arFragment.setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
 
             //Renderable mode in AR app
@@ -84,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
                     });
         });
 
-        Button clearButton = findViewById(R.id.clearButton);
+        findViewById(R.id.clearButton);
+        Button clearButton = new Button(this);
         clearButton.setOnClickListener(view -> onClear());
 
      /*   Button deleteButton = findViewById(R.id.deleteButton);
