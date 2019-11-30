@@ -24,8 +24,8 @@ public class ProductViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productview);
 
-        productToolbar = (Toolbar) findViewById(R.id.toolbarTop);
-        productImage = (ImageView) findViewById(R.id.product_image);
+        productToolbar = findViewById(R.id.toolbarTop);
+        productImage = findViewById(R.id.product_image);
 
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> this.finish());
