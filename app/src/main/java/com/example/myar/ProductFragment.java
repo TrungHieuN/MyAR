@@ -86,8 +86,8 @@ public class ProductFragment extends Fragment {
         @Override
         public View getView(final int position, View view, ViewGroup parent) {
             view = getLayoutInflater().inflate(R.layout.layout_list_item, null);
-            TextView tv = view.findViewById(R.id.item_name);
-            ImageView image = view.findViewById(R.id.item_image);
+            TextView tv = (TextView) view.findViewById(R.id.item_name);
+            ImageView image = (ImageView) view.findViewById(R.id.item_image);
             tv.setText(names[position]);
             image.setImageResource(images[position]);
             return view;
