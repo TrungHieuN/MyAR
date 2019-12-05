@@ -30,7 +30,6 @@ public class ArFragmentPreview extends AppCompatActivity {
 
     private ArFragment arFragment;
     public Plane.Type planeType;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,15 +52,14 @@ public class ArFragmentPreview extends AppCompatActivity {
                     });
         });
 
-        Button backButton = findViewById(R.id.deleteButton);
-        backButton.setOnClickListener(v -> this.finish());
+      /*  Button backButton = findViewById(R.id.deleteButton);
+        backButton.setOnClickListener(v -> this.finish()); */
 
-        findViewById(R.id.clearButton);
-        Button clearButton = new Button(this);
+        Button clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener(view -> onClear());
 
-     /*   Button deleteButton = findViewById(R.id.deleteButton);
-        deleteButton.setOnClickListener(view -> removeAnchorNode()); */
+        Button deleteButton = findViewById(R.id.deleteButton);
+        deleteButton.setOnClickListener(view -> removeAnchorNode(nodeToremove));
 
     }
     private void addModelToScene(ModelRenderable modelRenderable, HitResult hitResult, Plane.Type planeType) {
@@ -100,6 +98,18 @@ public class ArFragmentPreview extends AppCompatActivity {
             if (!(node instanceof Camera) && !(node instanceof Sun)) {
                 node.setParent(null);
             }
+        }
+    }
+
+    private void removeAnchorNode(AnchorNode nodeToremove) {
+        //Remove an anchor node
+        if (nodeToremove != null) {
+            arFragment.getArSceneView().getScene().removeChild(nodeToremove);
+            nodeToremove.getAnchor().detach();
+            nodeToremove.setParent(null);
+            Toast.makeText(ArFragmentPreview.this, "Test Delete - anchorNode removed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(ArFragmentPreview.this, "Test Delete - markAnchorNode was null", Toast.LENGTH_SHORT).show();
         }
     }
 }

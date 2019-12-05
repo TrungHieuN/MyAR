@@ -43,4 +43,5 @@ public class ProductViewActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ArFragmentPreview.class);
         startActivity(intent);
     }
+
 }
