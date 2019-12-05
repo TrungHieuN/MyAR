@@ -1,5 +1,6 @@
 package com.example.myar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,10 +28,19 @@ public class ProductViewActivity extends AppCompatActivity {
         productToolbar = findViewById(R.id.toolbarTop);
         productImage = findViewById(R.id.product_image);
 
+        //Back Button
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(view -> this.finish());
 
+        //itemName to Toolbar - Not yet finish!!!
         Bundle bundle = getIntent().getExtras();
         productToolbar.setTitle(bundle.getString(Arrays.toString(this.names)));
+
+        Button previewButton = findViewById(R.id.previewButton);
+        previewButton.setOnClickListener(v -> openPreview());
+    }
+    public void openPreview (){
+        Intent intent = new Intent(this, ArFragmentPreview.class);
+        startActivity(intent);
     }
 }

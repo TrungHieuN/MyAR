@@ -36,6 +36,10 @@
             android:name=".ProductViewActivity">
         </activity>
 
+        <activity
+            android:name=".ArFragmentPreview">
+        </activity>
+
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />
