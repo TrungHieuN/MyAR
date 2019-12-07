@@ -2,14 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="15dp"
+    android:padding="5dp"
+    android:layout_margin="20dp"
     android:id="@+id/parent_layout"
     android:background="@drawable/my_border">
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/item_image"
+        android:layout_marginLeft="5dp"
+        android:padding="5dp"
         android:src="@mipmap/ic_launcher"/>
+
     <TextView
         android:id="@+id/item_name"
         android:layout_width="wrap_content"
@@ -18,7 +23,20 @@
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/item_image"
         android:text="PlantName"
-        android:textColor="#000"
+        android:textColor="#49535E"
+        android:textStyle="bold"
         android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:textStyle="italic"
+        android:text="20 €"
+        android:textColor="#49535E"
+        android:textSize="15sp" />
 
 </RelativeLayout>

@@ -30,11 +30,13 @@ public class ArFragmentPreview extends AppCompatActivity {
 
     private ArFragment arFragment;
     public Plane.Type planeType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ar_preview_layout);
 
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_arpreview_layout);
         arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);
         arFragment.setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
 
@@ -52,14 +54,11 @@ public class ArFragmentPreview extends AppCompatActivity {
                     });
         });
 
-      /*  Button backButton = findViewById(R.id.deleteButton);
-        backButton.setOnClickListener(v -> this.finish()); */
+        Button backButton = findViewById(R.id.deleteButton);
+        backButton.setOnClickListener(v -> this.finish());
 
         Button clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener(view -> onClear());
-
-        Button deleteButton = findViewById(R.id.deleteButton);
-        deleteButton.setOnClickListener(view -> removeAnchorNode(nodeToremove));
 
     }
     private void addModelToScene(ModelRenderable modelRenderable, HitResult hitResult, Plane.Type planeType) {
@@ -101,15 +100,4 @@ public class ArFragmentPreview extends AppCompatActivity {
         }
     }
 
-    private void removeAnchorNode(AnchorNode nodeToremove) {
-        //Remove an anchor node
-        if (nodeToremove != null) {
-            arFragment.getArSceneView().getScene().removeChild(nodeToremove);
-            nodeToremove.getAnchor().detach();
-            nodeToremove.setParent(null);
-            Toast.makeText(ArFragmentPreview.this, "Test Delete - anchorNode removed", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(ArFragmentPreview.this, "Test Delete - markAnchorNode was null", Toast.LENGTH_SHORT).show();
-        }
-    }
 }

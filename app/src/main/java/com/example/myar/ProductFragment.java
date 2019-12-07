@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -24,6 +23,8 @@ public class ProductFragment extends Fragment {
     private String[] names = {"name1", "name2", "name3", "name4", "name5", "name6", "name7" };
     private int[] images = {R.drawable.background, R.drawable.ic_launcher_background, R.drawable.background,
             R.drawable.background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.background};
+    private String[] description ={"123", "456", "789", "1011", "abc", "3311", "31313"};
+    private String[] price ={"19,00 €", "20,50 €", "35,00 €", "44,19 €", "5,79 €", "89,99 €", "1,99 €"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,25 +32,25 @@ public class ProductFragment extends Fragment {
 
         setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.product_fragment, container, false);
-        ListView listView = view.findViewById(R.id.ListView);
+        ListView listView = view.findViewById(R.id.ItemListView);
         ProductFragment.customadapter ca = new ProductFragment.customadapter();
 
         listView.setOnItemClickListener((parent, view1, position, id) -> {
 
-            // Test
-          /*  if (position == 0) {
-                Toast.makeText(view1.getContext(), names[position] + "selected", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(view1.getContext(), names[position] + "selected", Toast.LENGTH_SHORT).show();
-            }*/
+            String nameItemListview = names[position];
+            int imageItemListview = images[position];
+            String descItemListview = description[position];
+            String priceItemListview = price[position];
 
             Intent intent = new Intent(view1.getContext(), ProductViewActivity.class);
-            intent.putExtra(names[position], (Integer) listView.getItemAtPosition(position));
+            intent.putExtra("item Names", nameItemListview);
+            intent.putExtra("item Images", imageItemListview);
+            intent.putExtra("item Desc", descItemListview);
+            intent.putExtra("item Price", priceItemListview);
             ProductFragment.this.startActivity(intent);
         });
         listView.setAdapter(ca);
         return view;
-
     }
 
     @Override
@@ -86,13 +87,17 @@ public class ProductFragment extends Fragment {
         @Override
         public View getView(final int position, View view, ViewGroup parent) {
             view = getLayoutInflater().inflate(R.layout.layout_list_item, null);
-            TextView tv = (TextView) view.findViewById(R.id.item_name);
-            ImageView image = (ImageView) view.findViewById(R.id.item_image);
+
+            TextView tv = view.findViewById(R.id.item_name);
+            ImageView image = view.findViewById(R.id.item_image);
+            TextView pv = view.findViewById(R.id.item_price);
+
             tv.setText(names[position]);
             image.setImageResource(images[position]);
+            pv.setText(price[position]);
+
             return view;
         }
-
     }
 
 }
