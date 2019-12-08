@@ -11,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.view.menu.MenuView;
 import androidx.fragment.app.Fragment;
 
 public class ProductFragment extends Fragment {
@@ -34,8 +36,8 @@ public class ProductFragment extends Fragment {
         View view = inflater.inflate(R.layout.product_fragment, container, false);
         ListView listView = view.findViewById(R.id.ItemListView);
         ProductFragment.customadapter ca = new ProductFragment.customadapter();
-
         listView.setOnItemClickListener((parent, view1, position, id) -> {
+
 
             String nameItemListview = names[position];
             int imageItemListview = images[position];
@@ -60,7 +62,7 @@ public class ProductFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_status) {
+        if (item.getItemId() == R.id.action_cart) {
             Toast.makeText(getActivity(), "Clicked on " + item.getTitle(), Toast.LENGTH_SHORT)
                     .show();
         }

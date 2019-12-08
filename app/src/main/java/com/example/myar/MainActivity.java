@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.app_name));
         setSupportActionBar(toolbar);
+        getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
+                R.color.colorProductBackground));
 
         tabLayout = findViewById(R.id.tabLayout);
         tabProduct = findViewById(R.id.tabProduct);
@@ -41,20 +43,20 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition() == 1) {
-                    toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAppBackground));
-                    tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAppBackground));
+                    toolbar.setBackground(ContextCompat.getDrawable(MainActivity.this,
+                            R.drawable.side_nav_bar3));
+                    tabLayout.setBackground(ContextCompat.getDrawable(MainActivity.this,
+                            R.drawable.side_nav_bar3));
                     getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorAppBackground));
+                            R.color.colorToolbar2));
 
                 } else {
-                    toolbar.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorPrimaryDark));
-                    tabLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorPrimaryDark));
+                    toolbar.setBackground(ContextCompat.getDrawable(MainActivity.this,
+                            R.drawable.side_nav_bar2));
+                    tabLayout.setBackground(ContextCompat.getDrawable(MainActivity.this,
+                            R.drawable.side_nav_bar2));
                     getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
-                            R.color.colorPrimaryDark));
+                            R.color.colorProductBackground));
                 }
             }
 

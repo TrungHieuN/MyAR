@@ -92,6 +92,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="85dp"
                 android:text="Preview"
+                android:textSize="12dp"
                 android:id="@+id/previewButton"
                 android:layout_centerVertical="true">
             </Button>
@@ -104,7 +105,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="85dp"
-                android:text="Buy">
+                android:text="Add to cart"
+                android:textSize="10dp">
 
             </Button>
         </RelativeLayout>

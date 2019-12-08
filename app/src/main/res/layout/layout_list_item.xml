@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/item_image"
         android:text="PlantName"
+        android:layout_toRightOf="@id/item_image"
         android:textColor="#49535E"
         android:textStyle="bold"
         android:textSize="17sp" />
@@ -38,5 +38,15 @@
         android:text="20 €"
         android:textColor="#49535E"
         android:textSize="15sp" />
+
+   <!-- <Button
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:id="@+id/item_plus"
+        android:background="@drawable/plus"
+        android:layout_centerVertical="true"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_toLeftOf="@id/item_price">
+    </Button> -->
 
 </RelativeLayout>

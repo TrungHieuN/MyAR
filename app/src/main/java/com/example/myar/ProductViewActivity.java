@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 
 public class ProductViewActivity extends AppCompatActivity {
@@ -43,6 +44,7 @@ public class ProductViewActivity extends AppCompatActivity {
 
         productToolbar.setTitle(getResources().getString(R.string.app_name));
         setSupportActionBar(productToolbar);
+        getWindow().setStatusBarColor(ContextCompat.getColor(ProductViewActivity.this, R.color.colorProductBackground));
 
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

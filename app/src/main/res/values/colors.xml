@@ -3,7 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorAppBackground">#49535E</color>
+    <color name="colorToolbar1">#343B42</color>
+    <color name="colorToolbar2">#10437A</color>
+    <color name="colorProductBackground">#49535E</color>
+    <color name="colorAccountBackground">#0C335C</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 </resources>
