@@ -65,6 +65,7 @@ public class ArFragmentPreview extends AppCompatActivity {
         Anchor anchor = hitResult.createAnchor();
         AnchorNode anchorNode = new AnchorNode(anchor);
         anchorNode.setParent(arFragment.getArSceneView().getScene());
+
         TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
         transformableNode.setParent(anchorNode);
         transformableNode.select();
@@ -79,7 +80,7 @@ public class ArFragmentPreview extends AppCompatActivity {
         } else if (planeType == Plane.Type.VERTICAL) {
             Node downward = new Node();
             downward.setParent(transformableNode);
-            //downward.setLookDirection(curPlaneNormal.negated());
+          //  downward.setLookDirection(new Vector3());
             downward.setRenderable(modelRenderable);
         } else {
             transformableNode.setRenderable(modelRenderable);

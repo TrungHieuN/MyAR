@@ -41,7 +41,7 @@
         </activity>
 
         <activity
-            android:name=".BuyActivity">
+            android:name=".CartActivity">
         </activity>
 
         <meta-data

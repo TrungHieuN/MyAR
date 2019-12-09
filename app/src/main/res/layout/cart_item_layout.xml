@@ -12,13 +12,15 @@
         android:orientation="horizontal"
         android:backgroundTint="#9FB5CC"
         android:background="@drawable/my_border"
+        android:id="@+id/cart_item"
         android:layout_margin="15dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/buyimage"
+            android:id="@+id/cart_item_image"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:padding="7dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_launcher_background">
         </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -32,18 +34,10 @@
                 android:layout_height="wrap_content"
                 android:text="Plant"
                 android:textSize="18dp"
+                android:id="@+id/cart_item_name"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold">
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="description"
-                android:textSize="18dp"
-                android:textStyle="italic">
             </TextView>
 
             <RelativeLayout
@@ -56,15 +50,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="€10"
+                    android:id="@+id/cart_item_price"
+                    android:layout_margin="10dp"
                     android:textSize="15dp"
                     android:textStyle="italic">
                 </TextView>
 
                 <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
                     android:layout_width="100dp"
-                    android:layout_height="25dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
+                    app:textSize="6dp"
+                    android:id="@+id/card_item_amount"
+                    android:layout_centerVertical="true"
                     app:backGroundColor="#9FB5CC"
                     app:textColor="@color/black">
                 </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>

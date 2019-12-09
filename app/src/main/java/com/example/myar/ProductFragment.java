@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.view.menu.MenuView;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 public class ProductFragment extends Fragment {
@@ -28,6 +29,7 @@ public class ProductFragment extends Fragment {
     private String[] description ={"123", "456", "789", "1011", "abc", "3311", "31313"};
     private String[] price ={"19,00 €", "20,50 €", "35,00 €", "44,19 €", "5,79 €", "89,99 €", "1,99 €"};
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,7 +39,6 @@ public class ProductFragment extends Fragment {
         ListView listView = view.findViewById(R.id.ItemListView);
         ProductFragment.customadapter ca = new ProductFragment.customadapter();
         listView.setOnItemClickListener((parent, view1, position, id) -> {
-
 
             String nameItemListview = names[position];
             int imageItemListview = images[position];
@@ -63,8 +64,7 @@ public class ProductFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_cart) {
-            Toast.makeText(getActivity(), "Clicked on " + item.getTitle(), Toast.LENGTH_SHORT)
-                    .show();
+           startActivity(new Intent(getContext(), CartActivity.class));
         }
         return true;
     }

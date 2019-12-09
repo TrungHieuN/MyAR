@@ -2,11 +2,14 @@ package com.example.myar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -46,6 +49,7 @@ public class ProductViewActivity extends AppCompatActivity {
         setSupportActionBar(productToolbar);
         getWindow().setStatusBarColor(ContextCompat.getColor(ProductViewActivity.this, R.color.colorProductBackground));
 
+        //backButton as arrow
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -54,8 +58,8 @@ public class ProductViewActivity extends AppCompatActivity {
         Button previewButton = findViewById(R.id.previewButton);
         previewButton.setOnClickListener(view -> openPreview());
 
-        Button buyButton = findViewById(R.id.buyButton);
-        buyButton.setOnClickListener(view -> openBuyActivity());
+        Button addToCartButton = findViewById(R.id.addToCartButton);
+        addToCartButton.setOnClickListener(view -> addToCartActivity());
 
 ;
     }
@@ -73,9 +77,12 @@ public class ProductViewActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openBuyActivity (){
-        Intent intent = new Intent(this, BuyActivity.class);
+    public void addToCartActivity (){
+        Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
+
+      /*  AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+        View itemView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.cart_layout,null);*/
     }
 
 }
