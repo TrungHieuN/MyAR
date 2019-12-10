@@ -9,6 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.ar.core.Frame;
+import com.google.ar.core.Trackable;
+import com.google.ar.sceneform.collision.Box;
+import com.google.ar.sceneform.rendering.PlaneRenderer;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
@@ -30,6 +34,7 @@ public class ArFragmentPreview extends AppCompatActivity {
 
     private ArFragment arFragment;
     public Plane.Type planeType;
+    ModelRenderable Fox, Vase, Plant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,38 +57,60 @@ public class ArFragmentPreview extends AppCompatActivity {
                         toast.show();
                         return null;
                     });
+            ModelRenderable.builder()
+                    .setSource(this, Uri.parse("AJ-Vase.sfb"))
+                    .build()
+                    .thenAccept(modelRenderable -> addModelToScene(Vase, hitResult, planeType))
+                    .exceptionally(throwable -> {
+                        Toast toast = Toast.makeText(this, "Unable to load andy renderable", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                        return null;
+                    });
+            ModelRenderable.builder()
+                    .setSource(this, Uri.parse("10432_Aloe_Plant_v1_max2008_it2.sfb"))
+                    .build()
+                    .thenAccept(modelRenderable -> addModelToScene(Plant, hitResult, planeType))
+                    .exceptionally(throwable -> {
+                        Toast toast = Toast.makeText(this, "Unable to load andy renderable", Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                        return null;
+                    });
         });
 
-        Button backButton = findViewById(R.id.deleteButton);
+        Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> this.finish());
 
         Button clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener(view -> onClear());
 
     }
+
     private void addModelToScene(ModelRenderable modelRenderable, HitResult hitResult, Plane.Type planeType) {
         Anchor anchor = hitResult.createAnchor();
         AnchorNode anchorNode = new AnchorNode(anchor);
         anchorNode.setParent(arFragment.getArSceneView().getScene());
 
+        Vector3 size = ((Box) modelRenderable.getCollisionShape()).getSize();
         TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
         transformableNode.setParent(anchorNode);
-        transformableNode.select();
         arFragment.getArSceneView().getScene().addChild(anchorNode);
 
         if (planeType == Plane.Type.HORIZONTAL_DOWNWARD_FACING) {
-            Node downward = new Node();
-            downward.setParent(transformableNode);
-            downward.setLocalPosition(new Vector3(0, 1, 0));
-            downward.setLocalRotation(new Quaternion(0, 0, 1, 0));
-            downward.setRenderable(modelRenderable);
+            transformableNode.setParent(transformableNode);
+            transformableNode.setLocalPosition(new Vector3(0, size.y, 0));
+            transformableNode.setLocalRotation(new Quaternion(0, 0, 1, 0));
+            transformableNode.setRenderable(modelRenderable);
+            transformableNode.select();
         } else if (planeType == Plane.Type.VERTICAL) {
-            Node downward = new Node();
-            downward.setParent(transformableNode);
-          //  downward.setLookDirection(new Vector3());
-            downward.setRenderable(modelRenderable);
+            transformableNode.setParent(transformableNode);
+            //transformableNode.setLookDirection(new Vector3(0,0,0));
+            transformableNode.setRenderable(modelRenderable);
+            transformableNode.select();
         } else {
             transformableNode.setRenderable(modelRenderable);
+            transformableNode.select();
         }
     }
 
