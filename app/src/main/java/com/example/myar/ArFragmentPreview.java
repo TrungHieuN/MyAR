@@ -9,10 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.ar.core.Frame;
-import com.google.ar.core.Trackable;
 import com.google.ar.sceneform.collision.Box;
-import com.google.ar.sceneform.rendering.PlaneRenderer;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.core.Anchor;
 import com.google.ar.core.HitResult;
@@ -91,7 +88,6 @@ public class ArFragmentPreview extends AppCompatActivity {
         Anchor anchor = hitResult.createAnchor();
         AnchorNode anchorNode = new AnchorNode(anchor);
         anchorNode.setParent(arFragment.getArSceneView().getScene());
-
         Vector3 size = ((Box) modelRenderable.getCollisionShape()).getSize();
         TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
         transformableNode.setParent(anchorNode);

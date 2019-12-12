@@ -7,6 +7,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.myar.Database.DataSource.CartRepository;
+import com.example.myar.Database.Local.CartDataSource;
+import com.example.myar.Database.Local.CartDatabase;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -19,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     TabItem tabProduct;
     TabItem tabAccount;
 
+    public static CartDatabase cartDatabase;
+    public static CartRepository cartRepository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getWindow().setStatusBarColor(ContextCompat.getColor(MainActivity.this,
                 R.color.colorProductBackground));
+
+        initDB();
 
         tabLayout = findViewById(R.id.tabLayout);
         tabProduct = findViewById(R.id.tabProduct);
@@ -73,5 +81,12 @@ public class MainActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
+
+
+    private void initDB() {
+        cartDatabase = CartDatabase.getInstance(this);
+        cartRepository = CartRepository.getInstance(CartDataSource.getInstance(cartDatabase.cartDAO()));
+    }
+
 
 }

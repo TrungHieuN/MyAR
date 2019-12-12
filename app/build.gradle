@@ -52,6 +52,10 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.1.0'
 
     implementation 'com.cepheuen.elegant-number-button:lib:1.0.3'
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    implementation 'android.arch.persistence.room:rxjava2:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'

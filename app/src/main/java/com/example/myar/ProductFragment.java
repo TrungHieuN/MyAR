@@ -15,11 +15,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.view.menu.MenuView;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+
 
 public class ProductFragment extends Fragment {
 
@@ -28,7 +26,8 @@ public class ProductFragment extends Fragment {
             R.drawable.background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.background};
     private String[] description ={"123", "456", "789", "1011", "abc", "3311", "31313"};
     private String[] price ={"19,00 €", "20,50 €", "35,00 €", "44,19 €", "5,79 €", "89,99 €", "1,99 €"};
-
+    private String[] object3D = {"ArcticFox_Posed.sfb", "AJ-Vase.sfb", "10432_Aloe_Plant_v1_max2008_it2.sfb","AJ-Vase.sfb",
+            "AJ-Vase.sfb", "ArcticFox_Posed.sfb", "10432_Aloe_Plant_v1_max2008_it2.sfb"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,16 +43,20 @@ public class ProductFragment extends Fragment {
             int imageItemListview = images[position];
             String descItemListview = description[position];
             String priceItemListview = price[position];
+            String object3DListview = object3D[position];
 
             Intent intent = new Intent(view1.getContext(), ProductViewActivity.class);
             intent.putExtra("item Names", nameItemListview);
             intent.putExtra("item Images", imageItemListview);
             intent.putExtra("item Desc", descItemListview);
             intent.putExtra("item Price", priceItemListview);
+            intent.putExtra("3D Object", object3DListview);
             ProductFragment.this.startActivity(intent);
         });
+
         listView.setAdapter(ca);
         return view;
+
     }
 
     @Override

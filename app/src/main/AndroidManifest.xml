@@ -8,6 +8,7 @@
         android:name="android.hardware.camera.ar"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application

@@ -2,17 +2,21 @@ package com.example.myar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+
+import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
+
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+
+import com.example.myar.Database.ModelDB.Cart;
+import com.google.gson.*;
 
 
 public class ProductViewActivity extends AppCompatActivity {
@@ -36,7 +40,7 @@ public class ProductViewActivity extends AppCompatActivity {
         String nameHolder = getIntent().getStringExtra("item Names");
         productName.setText(nameHolder);
 
-        int imageHolder = getIntent().getIntExtra("item Images",-1);
+        int imageHolder = getIntent().getIntExtra("item Images", -1);
         productImage.setImageResource(imageHolder);
 
         String descHolder = getIntent().getStringExtra("item Desc");
@@ -50,7 +54,7 @@ public class ProductViewActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(ContextCompat.getColor(ProductViewActivity.this, R.color.colorProductBackground));
 
         //backButton as arrow
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
@@ -60,10 +64,8 @@ public class ProductViewActivity extends AppCompatActivity {
 
         Button addToCartButton = findViewById(R.id.addToCartButton);
         addToCartButton.setOnClickListener(view -> addToCartActivity());
-
-;
     }
-    //click on Arrow to go back to MainActivity
+    //click on Arrow to go back to last Activity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
@@ -73,13 +75,30 @@ public class ProductViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void openPreview (){
+
         Intent intent = new Intent(this, ArFragmentPreview.class);
         startActivity(intent);
     }
 
     public void addToCartActivity (){
-        Intent intent = new Intent(this, CartActivity.class);
-        startActivity(intent);
+
+     //   Intent intent = new Intent(this, CartActivity.class);
+      //  startActivity(intent);
+
+        try {
+            Cart cartItem = new Cart();
+            cartItem.name = productName.getText().toString();
+            cartItem.description = productDesc.getText().toString();
+            cartItem.price = productPrice.getText().toString();
+
+            MainActivity.cartRepository.insertToCart(cartItem);
+            Log.d("MyAR", new Gson().toJson(cartItem));
+            Toast.makeText(this, "Save Item to Cart successful", Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception ex)
+        {
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
       /*  AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
         View itemView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.cart_layout,null);*/
