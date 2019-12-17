@@ -44,14 +44,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.txt_price.setText(new StringBuilder("€").append(cartList.get(position).price));
 
         //Auto save item when user change amount
-        holder.txt_amount.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
-            @Override
-            public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
-                Cart cart = cartList.get(position);
-                cart.amount = newValue;
+        holder.txt_amount.setOnValueChangeListener((view, oldValue, newValue) -> {
+            Cart cart = cartList.get(position);
+            cart.amount = newValue;
 
-                MainActivity.cartRepository.updateCart(cart);
-            }
+            MainActivity.cartRepository.updateCart(cart);
         });
     }
 

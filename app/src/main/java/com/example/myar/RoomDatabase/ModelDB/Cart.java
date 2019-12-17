@@ -13,7 +13,7 @@ public class Cart {
     public int id;
 
     @ColumnInfo(name="Image")
-    public int image;
+    public String image;
 
     @ColumnInfo(name="Amount")
     public int amount;

@@ -11,10 +11,9 @@ import com.example.myar.RoomDatabase.ModelDB.Cart;
 
 import java.util.List;
 
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Consumer;
+
 import io.reactivex.schedulers.Schedulers;
 
 public class CartActivity extends AppCompatActivity {
@@ -37,7 +36,6 @@ public class CartActivity extends AppCompatActivity {
         checkoutButton = findViewById(R.id.checkout_button);
 
         loadCartItems();
-
     }
 
     private void loadCartItems() {
@@ -45,12 +43,7 @@ public class CartActivity extends AppCompatActivity {
                 MainActivity.cartRepository.getCartItem()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Consumer<List<Cart>>() {
-                    @Override
-                    public void accept(List<Cart> carts) throws Exception {
-                        displayCartItem(carts);
-                    }
-                })
+                .subscribe(this::displayCartItem)
         );
     }
 

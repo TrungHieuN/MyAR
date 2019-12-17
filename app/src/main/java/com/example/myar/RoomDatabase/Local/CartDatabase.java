@@ -6,14 +6,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.myar.RoomDatabase.ModelDB.Cart;
-import com.example.myar.ProductFragment;
 
-@Database(entities = {Cart.class}, version = 1, exportSchema = false)
+@Database(entities = {Cart.class}, version = 2, exportSchema = false)
 public abstract class CartDatabase extends RoomDatabase {
-
-    public static CartDatabase getInstance(ProductFragment productFragment) {
-        return null;
-    }
 
     public abstract  CartDAO cartDAO();
     private static CartDatabase instance;
