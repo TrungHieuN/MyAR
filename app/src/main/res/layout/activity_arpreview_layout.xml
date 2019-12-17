@@ -15,7 +15,7 @@
         android:text="Clear"
         android:layout_margin="11dp"
         android:background="@drawable/my_border2"
-        android:textColor="@color/white" />
+        android:textColor="@color/colorWhite" />
 
     <Button
         android:id="@+id/backButton"
@@ -25,7 +25,7 @@
         android:layout_margin="10dp"
         android:background="@drawable/my_border2"
         android:text="x"
-        android:textColor="@color/white"
+        android:textColor="@color/colorWhite"
         android:textSize="13dp" />
 
     <fragment

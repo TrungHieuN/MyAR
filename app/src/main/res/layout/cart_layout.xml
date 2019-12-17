@@ -3,16 +3,17 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/BuyListView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cartListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/white"
+        android:divider="@color/colorWhite"
         android:layout_above="@+id/checkout_button"
         android:dividerHeight="10.0sp"
+        android:layout_alignParentTop="true"
         android:layout_marginBottom="10dp">
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,6 +23,6 @@
         android:background="@drawable/my_border2"
         android:backgroundTint="@color/colorAccountBackground"
         android:layout_margin="15dp"
-        android:textColor="@color/white">
+        android:textColor="@color/colorWhite">
     </Button>
 </RelativeLayout>

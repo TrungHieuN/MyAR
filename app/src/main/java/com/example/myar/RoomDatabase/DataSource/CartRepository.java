@@ -1,6 +1,6 @@
-package com.example.myar.Database.DataSource;
+package com.example.myar.RoomDatabase.DataSource;
 
-import com.example.myar.Database.ModelDB.Cart;
+import com.example.myar.RoomDatabase.ModelDB.Cart;
 
 import java.util.List;
 
@@ -24,8 +24,8 @@ public class CartRepository implements ICartDataSource {
     }
 
     @Override
-    public Flowable<List<Cart>> getItem() {
-        return iCartDataSource.getItem();
+    public Flowable<List<Cart>> getCartItem() {
+        return iCartDataSource.getCartItem();
     }
 
     @Override

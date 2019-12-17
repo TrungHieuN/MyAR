@@ -62,7 +62,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="16dp"
                     app:textSize="6dp"
-                    android:id="@+id/card_item_amount"
+                    android:id="@+id/cart_item_amount"
                     android:layout_centerVertical="true"
                     app:backGroundColor="#9FB5CC"
                     app:textColor="@color/black">

@@ -1,14 +1,14 @@
-package com.example.myar.Database.Local;
+package com.example.myar.RoomDatabase.Local;
 import android.content.Context;
 
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.myar.Database.ModelDB.Cart;
+import com.example.myar.RoomDatabase.ModelDB.Cart;
 import com.example.myar.ProductFragment;
 
-@Database(entities = {Cart.class}, version = 1)
+@Database(entities = {Cart.class}, version = 1, exportSchema = false)
 public abstract class CartDatabase extends RoomDatabase {
 
     public static CartDatabase getInstance(ProductFragment productFragment) {

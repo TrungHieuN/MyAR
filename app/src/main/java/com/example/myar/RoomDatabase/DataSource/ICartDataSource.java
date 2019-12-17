@@ -1,13 +1,13 @@
-package com.example.myar.Database.DataSource;
+package com.example.myar.RoomDatabase.DataSource;
 
-import com.example.myar.Database.ModelDB.Cart;
+import com.example.myar.RoomDatabase.ModelDB.Cart;
 
 import java.util.List;
 
 import io.reactivex.Flowable;
 
 public interface ICartDataSource {
-    Flowable<List<Cart>> getItem();
+    Flowable<List<Cart>> getCartItem();
     Flowable<List<Cart>>getCartItemById(int ItemId);
     int countItem();
     void emptyCart();

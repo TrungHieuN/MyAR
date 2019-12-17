@@ -1,11 +1,8 @@
-package com.example.myar.Database.ModelDB;
+package com.example.myar.RoomDatabase.ModelDB;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.sql.Blob;
-
 
 @Entity(tableName = "PlantsCart")
 public class Cart {
@@ -15,8 +12,11 @@ public class Cart {
     @ColumnInfo(name="id")
     public int id;
 
-   // @ColumnInfo(name="Image")
-    //public Blob image;
+    @ColumnInfo(name="Image")
+    public int image;
+
+    @ColumnInfo(name="Amount")
+    public int amount;
 
     @ColumnInfo(name = "plantName")
     public String name;

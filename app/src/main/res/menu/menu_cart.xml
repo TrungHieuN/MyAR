@@ -6,5 +6,6 @@
     android:id="@+id/action_cart"
     android:icon="@drawable/cart"
     android:title="Cart"
-    app:showAsAction="ifRoom" />
+    app:showAsAction="always"
+      app:actionLayout="@layout/cart_bar_notification_icon"/>
 </menu>

@@ -11,15 +11,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.nex3z.notificationbadge.NotificationBadge;
+
 
 public class ProductFragment extends Fragment {
+
+    private NotificationBadge badge;
+    private ImageView cart_icon;
 
     private String[] names = {"name1", "name2", "name3", "name4", "name5", "name6", "name7" };
     private int[] images = {R.drawable.background, R.drawable.ic_launcher_background, R.drawable.background,
@@ -32,8 +36,8 @@ public class ProductFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         setHasOptionsMenu(true);
+
         View view = inflater.inflate(R.layout.product_fragment, container, false);
         ListView listView = view.findViewById(R.id.ItemListView);
         ProductFragment.customadapter ca = new ProductFragment.customadapter();
@@ -43,14 +47,14 @@ public class ProductFragment extends Fragment {
             int imageItemListview = images[position];
             String descItemListview = description[position];
             String priceItemListview = price[position];
-            String object3DListview = object3D[position];
+        //    String object3DListview = object3D[position];
 
             Intent intent = new Intent(view1.getContext(), ProductViewActivity.class);
             intent.putExtra("item Names", nameItemListview);
             intent.putExtra("item Images", imageItemListview);
             intent.putExtra("item Desc", descItemListview);
             intent.putExtra("item Price", priceItemListview);
-            intent.putExtra("3D Object", object3DListview);
+         //   intent.putExtra("3D Object", object3DListview);
             ProductFragment.this.startActivity(intent);
         });
 
@@ -60,14 +64,30 @@ public class ProductFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_status, menu);
+        public void onCreateOptionsMenu( Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_cart, menu);
+        View view = menu.findItem(R.id.action_cart).getActionView();;
+        badge = view.findViewById(R.id.badge);
+        cart_icon = view.findViewById(R.id.cart_icon);
+        cart_icon.setOnClickListener(v -> startActivity(new Intent (getContext(), CartActivity.class)));
+        updateCartCount();
+    }
+
+    private void updateCartCount() {
+        if(badge == null) return;
+        getActivity().runOnUiThread(() -> {
+            if (MainActivity.cartRepository.countItem() == 0)
+                badge.setVisibility(View.VISIBLE);
+            else {
+                badge.setVisibility((View.VISIBLE));
+                badge.setText(String.valueOf(MainActivity.cartRepository.countItem()));
+            }
+        });
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_cart) {
-           startActivity(new Intent(getContext(), CartActivity.class));
         }
         return true;
     }
@@ -105,4 +125,9 @@ public class ProductFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateCartCount();
+    }
 }

@@ -10,16 +10,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 
-import com.example.myar.Database.ModelDB.Cart;
+import com.example.myar.RoomDatabase.ModelDB.Cart;
 import com.google.gson.*;
 
 
-public class ProductViewActivity extends AppCompatActivity {
+public class ProductViewActivity extends FragmentActivity {
     Toolbar productToolbar;
     ImageView productImage;
     TextView productName;
@@ -50,13 +51,13 @@ public class ProductViewActivity extends AppCompatActivity {
         productPrice.setText(priceHolder);
 
         productToolbar.setTitle(getResources().getString(R.string.app_name));
-        setSupportActionBar(productToolbar);
+        setActionBar(productToolbar);
         getWindow().setStatusBarColor(ContextCompat.getColor(ProductViewActivity.this, R.color.colorProductBackground));
 
         //backButton as arrow
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        if (getActionBar() != null) {
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+            getActionBar().setDisplayShowHomeEnabled(true);
         }
 
         Button previewButton = findViewById(R.id.previewButton);

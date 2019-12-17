@@ -7,6 +7,6 @@
     <color name="colorToolbar2">#10437A</color>
     <color name="colorProductBackground">#49535E</color>
     <color name="colorAccountBackground">#0C335C</color>
-    <color name="white">#ffffff</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="black">#000000</color>
 </resources>

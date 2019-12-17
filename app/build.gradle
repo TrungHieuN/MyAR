@@ -39,6 +39,13 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.android.support:appcompat-v7:29.0.0'
 
+    //Firebase Database
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-database:19.2.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
+    implementation 'com.google.firebase:firebase-core:17.2.1'
+    implementation 'com.google.firebase:firebase-storage:19.1.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -56,10 +63,18 @@ dependencies {
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    //Android Schedulers
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.3'
+    //Notification Badge
+    implementation 'com.nex3z:notification-badge:1.0.2'
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'
-
+apply plugin: 'com.google.gms.google-services'
 
 
 sceneform.asset('sampledata/ArcticFox_Posed.obj',

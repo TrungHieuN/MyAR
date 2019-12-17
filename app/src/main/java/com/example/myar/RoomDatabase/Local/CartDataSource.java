@@ -1,7 +1,7 @@
-package com.example.myar.Database.Local;
+package com.example.myar.RoomDatabase.Local;
 
-import com.example.myar.Database.DataSource.ICartDataSource;
-import com.example.myar.Database.ModelDB.Cart;
+import com.example.myar.RoomDatabase.DataSource.ICartDataSource;
+import com.example.myar.RoomDatabase.ModelDB.Cart;
 
 import java.util.List;
 
@@ -23,8 +23,8 @@ public class CartDataSource implements ICartDataSource {
     }
 
     @Override
-    public Flowable<List<Cart>> getItem() {
-        return cartDAO.getItem();
+    public Flowable<List<Cart>> getCartItem() {
+        return cartDAO.getCartItem();
 
     }
 
