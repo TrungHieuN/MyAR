@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "311604441393",
+    "firebase_url": "https://myar-c2437.firebaseio.com",
+    "project_id": "myar-c2437",
+    "storage_bucket": "myar-c2437.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311604441393:android:fe6795205c3e8f66084010",
+        "android_client_info": {
+          "package_name": "com.example.myar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311604441393-hs9co8aq2625k83sfgttnuhaquihh2hd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myar",
+            "certificate_hash": "78a5e2ad4d1217513e6a45c98056a15d0f4ee938"
+          }
+        },
+        {
+          "client_id": "311604441393-ukrbvu83ll44kdguslvov5ohlh081h7v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALB_46q8xHx5GmNEaH06tdzldY0m7TAYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311604441393-ukrbvu83ll44kdguslvov5ohlh081h7v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
