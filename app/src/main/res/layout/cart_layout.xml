@@ -1,28 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cartListView"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/CartToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:divider="@color/colorWhite"
-        android:layout_above="@+id/checkout_button"
-        android:dividerHeight="10.0sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="10dp">
+        app:titleTextColor="@color/white"
+        android:background="@drawable/side_nav_bar">
 
-    </androidx.recyclerview.widget.RecyclerView>
-    <Button
+    </androidx.appcompat.widget.Toolbar>
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkout_button"
-        android:layout_alignParentBottom="true"
-        android:text="proceed to checkout"
-        android:background="@drawable/my_border2"
-        android:backgroundTint="@color/colorAccountBackground"
-        android:layout_margin="15dp"
-        android:textColor="@color/colorWhite">
-    </Button>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/CartToolbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cartListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/checkout_button"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-1dp"
+            android:divider="@color/colorWhite">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkout_button"
+            android:layout_alignParentBottom="true"
+            android:text="proceed to checkout"
+            android:background="@drawable/my_border2"
+            android:backgroundTint="@color/colorAccountBackground"
+            android:layout_margin="15dp"
+            android:textColor="@color/colorWhite">
+        </Button>
+    </RelativeLayout>
 </RelativeLayout>

@@ -50,7 +50,7 @@ public class ProductViewActivity extends FragmentActivity {
         String priceHolder = getIntent().getStringExtra("item Price");
         productPrice.setText(priceHolder);
 
-        productToolbar.setTitle(getResources().getString(R.string.app_name));
+        productToolbar.setTitle("Detail");
         setActionBar(productToolbar);
         getWindow().setStatusBarColor(ContextCompat.getColor(ProductViewActivity.this, R.color.colorProductBackground));
 
@@ -83,9 +83,6 @@ public class ProductViewActivity extends FragmentActivity {
 
     public void addToCartActivity (){
 
-     //   Intent intent = new Intent(this, CartActivity.class);
-      //  startActivity(intent);
-
         try {
             Cart cartItem = new Cart();
             cartItem.name = productName.getText().toString();
@@ -101,8 +98,6 @@ public class ProductViewActivity extends FragmentActivity {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-      /*  AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-        View itemView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.cart_layout,null);*/
     }
 
 }

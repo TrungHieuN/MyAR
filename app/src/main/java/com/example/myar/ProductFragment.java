@@ -23,7 +23,6 @@ import com.nex3z.notificationbadge.NotificationBadge;
 public class ProductFragment extends Fragment {
 
     private NotificationBadge badge;
-    private ImageView cart_icon;
 
     private String[] names = {"name1", "name2", "name3", "name4", "name5", "name6", "name7" };
     private int[] images = {R.drawable.background, R.drawable.ic_launcher_background, R.drawable.background,
@@ -68,7 +67,7 @@ public class ProductFragment extends Fragment {
         inflater.inflate(R.menu.menu_cart, menu);
         View view = menu.findItem(R.id.action_cart).getActionView();;
         badge = view.findViewById(R.id.badge);
-        cart_icon = view.findViewById(R.id.cart_icon);
+        ImageView cart_icon = view.findViewById(R.id.cart_icon);
         cart_icon.setOnClickListener(v -> startActivity(new Intent (getContext(), CartActivity.class)));
         updateCartCount();
     }

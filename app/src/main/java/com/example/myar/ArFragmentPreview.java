@@ -36,7 +36,6 @@ public class ArFragmentPreview extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arpreview_layout);
         arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);
@@ -54,7 +53,7 @@ public class ArFragmentPreview extends AppCompatActivity {
                         toast.show();
                         return null;
                     });
-            ModelRenderable.builder()
+      /*      ModelRenderable.builder()
                     .setSource(this, Uri.parse("AJ-Vase.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(Vase, hitResult, planeType))
@@ -73,8 +72,9 @@ public class ArFragmentPreview extends AppCompatActivity {
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                         return null;
-                    });
+                    }); */
         });
+
 
         Button backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> this.finish());
@@ -88,7 +88,9 @@ public class ArFragmentPreview extends AppCompatActivity {
         Anchor anchor = hitResult.createAnchor();
         AnchorNode anchorNode = new AnchorNode(anchor);
         anchorNode.setParent(arFragment.getArSceneView().getScene());
+
         Vector3 size = ((Box) modelRenderable.getCollisionShape()).getSize();
+
         TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
         transformableNode.setParent(anchorNode);
         arFragment.getArSceneView().getScene().addChild(anchorNode);

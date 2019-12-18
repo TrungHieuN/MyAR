@@ -1,9 +1,13 @@
 package com.example.myar;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,12 +24,17 @@ public class CartActivity extends AppCompatActivity {
 
     private RecyclerView recycler_cart;
     private Button checkoutButton;
-
     private CompositeDisposable compositeDisposable;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart_layout);
+
+        Toolbar cartToolbar = findViewById(R.id.CartToolbar);
+        cartToolbar.setTitle("Cart");
+        cartToolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(cartToolbar);
+        getWindow().setStatusBarColor(ContextCompat.getColor(CartActivity.this, R.color.colorProductBackground));
 
         compositeDisposable = new CompositeDisposable();
 
@@ -36,6 +45,22 @@ public class CartActivity extends AppCompatActivity {
         checkoutButton = findViewById(R.id.checkout_button);
 
         loadCartItems();
+
+        //backButton as arrow
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;// close this activity and return to preview activity (if there is any)
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void loadCartItems() {
@@ -64,5 +89,4 @@ public class CartActivity extends AppCompatActivity {
         compositeDisposable.clear();
         super.onStop();
     }
-
 }
