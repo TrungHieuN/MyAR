@@ -1,6 +1,7 @@
 package com.example.myar;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,18 +11,32 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.nex3z.notificationbadge.NotificationBadge;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProductFragment extends Fragment {
 
+    private DatabaseReference databaseReference;
+
+    private List<PlantItem> plantlist;
+    private ListView listView;
     private NotificationBadge badge;
 
     private String[] names = {"name1", "name2", "name3", "name4", "name5", "name6", "name7" };
@@ -29,16 +44,17 @@ public class ProductFragment extends Fragment {
             R.drawable.background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.background};
     private String[] description ={"123", "456", "789", "1011", "abc", "3311", "31313"};
     private String[] price ={"19,00 €", "20,50 €", "35,00 €", "44,19 €", "5,79 €", "89,99 €", "1,99 €"};
-    private String[] object3D = {"ArcticFox_Posed.sfb", "AJ-Vase.sfb", "10432_Aloe_Plant_v1_max2008_it2.sfb","AJ-Vase.sfb",
-            "AJ-Vase.sfb", "ArcticFox_Posed.sfb", "10432_Aloe_Plant_v1_max2008_it2.sfb"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
 
+        databaseReference = FirebaseDatabase.getInstance().getReference("plantItem");
+        plantlist = new ArrayList<>();
+
         View view = inflater.inflate(R.layout.product_fragment, container, false);
-        ListView listView = view.findViewById(R.id.ItemListView);
+        listView = view.findViewById(R.id.ItemListView);
         ProductFragment.customadapter ca = new ProductFragment.customadapter();
         listView.setOnItemClickListener((parent, view1, position, id) -> {
 
@@ -46,20 +62,50 @@ public class ProductFragment extends Fragment {
             int imageItemListview = images[position];
             String descItemListview = description[position];
             String priceItemListview = price[position];
-        //    String object3DListview = object3D[position];
 
             Intent intent = new Intent(view1.getContext(), ProductViewActivity.class);
+
             intent.putExtra("item Names", nameItemListview);
             intent.putExtra("item Images", imageItemListview);
             intent.putExtra("item Desc", descItemListview);
             intent.putExtra("item Price", priceItemListview);
-         //   intent.putExtra("3D Object", object3DListview);
             ProductFragment.this.startActivity(intent);
         });
 
         listView.setAdapter(ca);
         return view;
 
+    }
+
+
+    public class PlantAdapter extends ArrayAdapter<PlantItem> {
+
+        public PlantAdapter(@NonNull Activity context, List<PlantItem> plantlist) {
+            super(context, R.layout.layout_list_item, plantlist);
+        }
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                plantlist.clear();
+                for (DataSnapshot plantSnapshot : dataSnapshot.getChildren()){
+                    PlantItem plantItem = plantSnapshot.getValue(PlantItem.class);
+
+                    plantlist.add(plantItem);
+                }
+
+                PlantAdapter adapter = new PlantAdapter(getContext(),plantlist);
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -109,18 +155,21 @@ public class ProductFragment extends Fragment {
 
         @SuppressLint({"ViewHolder", "InflateParams"})
         @Override
-        public View getView(final int position, View view, ViewGroup parent) {
-            view = getLayoutInflater().inflate(R.layout.layout_list_item, null);
+        public View getView(final int position, View listItemView, ViewGroup parent) {
+            listItemView = getLayoutInflater().inflate(R.layout.layout_list_item, null, true);
 
-            TextView tv = view.findViewById(R.id.item_name);
-            ImageView image = view.findViewById(R.id.item_image);
-            TextView pv = view.findViewById(R.id.item_price);
 
-            tv.setText(names[position]);
-            image.setImageResource(images[position]);
-            pv.setText(price[position]);
+            TextView tv = listItemView.findViewById(R.id.item_name);
+            ImageView image = listItemView.findViewById(R.id.item_image);
+            TextView pv = listItemView.findViewById(R.id.item_price);
 
-            return view;
+            PlantItem plantItem = plantlist.get(position);
+
+            tv.setText(plantItem.getPlantName());
+            image.setImageURI(plantItem.getImage());
+            pv.setText(plantItem.getPrice());
+
+            return listItemView;
         }
     }
 

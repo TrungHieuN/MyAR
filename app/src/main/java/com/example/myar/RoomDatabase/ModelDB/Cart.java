@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "PlantsCart")
-public class Cart {
+public class Cart  {
 
 @NonNull
     @PrimaryKey(autoGenerate = true)

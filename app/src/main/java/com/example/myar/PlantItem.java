@@ -1,14 +1,12 @@
-package com.example.myar.MainDatabase;
+package com.example.myar;
 
 import android.net.Uri;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-abstract class Member extends AppCompatActivity {
+public class PlantItem{
     private int id;
     private String plantName;
     private String description;
-    private float price;
+    private String price;
     private Uri image;
 
     public int getId() {
@@ -35,11 +33,11 @@ abstract class Member extends AppCompatActivity {
         this.description = description;
     }
 
-    public float getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

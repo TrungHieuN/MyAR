@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -63,6 +65,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         TextView txt_product_name, txt_price;
         ElegantNumberButton txt_amount;
 
+        RelativeLayout view_background;
+        LinearLayout view_foreground;
+
         CartViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -70,6 +75,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             txt_product_name = itemView.findViewById(R.id.cart_item_name);
             txt_price = itemView.findViewById(R.id.cart_item_price);
             txt_amount = itemView.findViewById(R.id.cart_item_amount);
+
+            view_background = itemView.findViewById(R.id.cart_item_background);
+            view_foreground = itemView.findViewById(R.id.cart_item_foreground);
         }
+    }
+    public void removeItem(int position)
+    {
+        cartList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void restoreItem(Cart item, int position)
+    {
+        cartList.add(position, item);
+        notifyItemInserted(position);
     }
 }

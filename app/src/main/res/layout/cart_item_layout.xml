@@ -6,13 +6,41 @@
     android:layout_height="wrap_content"
     app:cardElevation="8dp">
 
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="110dp"
+       android:id="@+id/cart_item_background">
+
+       <ImageView
+           android:layout_width="30dp"
+           android:layout_height="30dp"
+           android:src="@drawable/ic_delete_sweep_black_24dp"
+           android:id="@+id/delete_icon"
+           android:layout_marginRight="20dp"
+           android:layout_centerVertical="true"
+           android:layout_alignParentRight="true">
+
+       </ImageView>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toLeftOf="@id/delete_icon"
+           android:text="DELETE"
+           android:layout_centerVertical="true"
+           android:layout_marginRight="5dp">
+
+       </TextView>
+
+   </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:backgroundTint="#9FB5CC"
         android:background="@drawable/my_border"
-        android:id="@+id/cart_item"
+        android:id="@+id/cart_item_foreground"
         android:layout_margin="15dp">
 
         <de.hdodenhof.circleimageview.CircleImageView

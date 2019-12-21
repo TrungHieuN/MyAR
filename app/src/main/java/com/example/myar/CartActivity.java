@@ -4,15 +4,19 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myar.RoomDatabase.ModelDB.Cart;
+import com.google.android.material.snackbar.Snackbar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -20,11 +24,17 @@ import io.reactivex.disposables.CompositeDisposable;
 
 import io.reactivex.schedulers.Schedulers;
 
-public class CartActivity extends AppCompatActivity {
+import static com.google.android.material.snackbar.Snackbar.*;
 
+
+public class CartActivity extends AppCompatActivity implements RecyclerItemTouchHelperListener {
+
+    private RelativeLayout rootLayout;
     private RecyclerView recycler_cart;
     private Button checkoutButton;
+    private CartAdapter cartAdapter;
     private CompositeDisposable compositeDisposable;
+    private List<Cart> cartList = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +48,16 @@ public class CartActivity extends AppCompatActivity {
 
         compositeDisposable = new CompositeDisposable();
 
+        rootLayout = findViewById(R.id.rootLayout);
+
         recycler_cart = findViewById(R.id.cartListView);
         recycler_cart.setLayoutManager(new LinearLayoutManager(this));
         recycler_cart.setHasFixedSize(true);
 
         checkoutButton = findViewById(R.id.checkout_button);
+
+        ItemTouchHelper.SimpleCallback simpleCallback = new RecycleItemTouchHelper(0, ItemTouchHelper.LEFT , this);
+        new ItemTouchHelper(simpleCallback).attachToRecyclerView(recycler_cart);
 
         loadCartItems();
 
@@ -73,11 +88,11 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void displayCartItem(List<Cart> carts) {
-        CartAdapter cartAdapter = new CartAdapter(this, carts);
+        cartList = carts;
+        cartAdapter = new CartAdapter(this, carts);
         recycler_cart.setAdapter(cartAdapter);
 
     }
-
     @Override
     protected void onDestroy() {
         compositeDisposable.clear();
@@ -89,4 +104,35 @@ public class CartActivity extends AppCompatActivity {
         compositeDisposable.clear();
         super.onStop();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadCartItems();
+    }
+
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position)
+    {
+        if (viewHolder instanceof CartAdapter.CartViewHolder)
+        {
+            // if (cartList != null && cartList.size() != 0)
+            String name = cartList.get(viewHolder.getAdapterPosition()).name;
+            Cart deletedItem = cartList.get(viewHolder.getAdapterPosition());
+            int deletedIndex = viewHolder.getAdapterPosition();
+
+            //Delete Item from Adapter
+            cartAdapter.removeItem(deletedIndex);
+            //Delete Item from Room database
+            MainActivity.cartRepository.deleteCartItem(deletedItem);
+
+            Snackbar snackbar = make(rootLayout, name + " removed from Cart List", Snackbar.LENGTH_LONG);
+            snackbar.setAction("UNDO", v -> {
+                cartAdapter.restoreItem(deletedItem, deletedIndex);
+                MainActivity.cartRepository.insertToCart(deletedItem);
+            });
+            snackbar.setActionTextColor(Color.YELLOW);
+            snackbar.show();
+        }
+    }
+
 }

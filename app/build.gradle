@@ -82,11 +82,6 @@ sceneform.asset('sampledata/ArcticFox_Posed.obj',
         'sampledata/ArcticFox_Posed.sfa',
         'src/main/assets/ArcticFox_Posed')
 
-sceneform.asset('sampledata/AJ-Vase.obj',
-        'default',
-        'sampledata/AJ-Vase.sfa',
-        'src/main/assets/AJ-Vase')
-
 sceneform.asset('sampledata/10432_Aloe_Plant_v1_max2008_it2.obj',
         'default',
         'sampledata/10432_Aloe_Plant_v1_max2008_it2.sfa',
