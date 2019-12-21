@@ -97,7 +97,7 @@ public class ProductFragment extends Fragment {
                     plantlist.add(plantItem);
                 }
 
-                PlantAdapter adapter = new PlantAdapter(getContext(),plantlist);
+                PlantAdapter adapter = new PlantAdapter(getActivity(),plantlist);
                 listView.setAdapter(adapter);
             }
 

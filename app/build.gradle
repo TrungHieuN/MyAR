@@ -66,7 +66,7 @@ dependencies {
 
     //Android Schedulers
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.0.3'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.6'
     //Notification Badge
     implementation 'com.nex3z:notification-badge:1.0.2'
     //Picasso

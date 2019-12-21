@@ -53,26 +53,6 @@ public class ArFragmentPreview extends AppCompatActivity {
                         toast.show();
                         return null;
                     });
-      /*      ModelRenderable.builder()
-                    .setSource(this, Uri.parse("AJ-Vase.sfb"))
-                    .build()
-                    .thenAccept(modelRenderable -> addModelToScene(Vase, hitResult, planeType))
-                    .exceptionally(throwable -> {
-                        Toast toast = Toast.makeText(this, "Unable to load andy renderable", Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-                        return null;
-                    });
-            ModelRenderable.builder()
-                    .setSource(this, Uri.parse("10432_Aloe_Plant_v1_max2008_it2.sfb"))
-                    .build()
-                    .thenAccept(modelRenderable -> addModelToScene(Plant, hitResult, planeType))
-                    .exceptionally(throwable -> {
-                        Toast toast = Toast.makeText(this, "Unable to load andy renderable", Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();
-                        return null;
-                    }); */
         });
 
 
