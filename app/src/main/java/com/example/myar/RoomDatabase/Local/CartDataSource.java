@@ -12,7 +12,7 @@ public class CartDataSource implements ICartDataSource {
     private CartDAO cartDAO;
     private static CartDataSource instance;
 
-    public CartDataSource(CartDAO cartDAO){
+    private CartDataSource(CartDAO cartDAO){
         this.cartDAO = cartDAO;
     }
 

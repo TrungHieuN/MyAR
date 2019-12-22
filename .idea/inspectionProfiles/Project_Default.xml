@@ -6,6 +6,15 @@
       <option name="DONT_REPORT_TRUE_ASSERT_STATEMENTS" value="false" />
     </inspection_tool>
     <inspection_tool class="Deprecation" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PublicField" enabled="true" level="INFORMATION" enabled_by_default="true">
+      <option name="ignoreEnums" value="false" />
+      <option name="ignorableAnnotations">
+        <value>
+          <item value="androidx.room.ColumnInfo" />
+          <item value="org.junit.runners.Parameterized.Parameter" />
+        </value>
+      </option>
+    </inspection_tool>
     <inspection_tool class="SingleStatementInBlock" enabled="false" level="INFORMATION" enabled_by_default="false" />
   </profile>
 </component>

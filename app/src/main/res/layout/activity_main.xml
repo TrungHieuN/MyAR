@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:background="@drawable/side_nav_bar"
+        android:background="@drawable/side_nav_bar2"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
@@ -23,7 +23,7 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/side_nav_bar"
+            android:background="@drawable/side_nav_bar2"
             app:tabSelectedTextColor="@color/colorWhite"
             app:tabTextColor="@color/black">
 

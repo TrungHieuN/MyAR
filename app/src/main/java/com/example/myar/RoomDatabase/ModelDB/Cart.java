@@ -1,4 +1,6 @@
 package com.example.myar.RoomDatabase.ModelDB;
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
