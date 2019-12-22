@@ -77,13 +77,6 @@ public class ProductFragment extends Fragment {
 
     }
 
-
-    public class PlantAdapter extends ArrayAdapter<PlantItem> {
-
-        public PlantAdapter(@NonNull Activity context, List<PlantItem> plantlist) {
-            super(context, R.layout.layout_list_item, plantlist);
-        }
-    }
     @Override
     public void onStart() {
         super.onStart();
@@ -163,12 +156,13 @@ public class ProductFragment extends Fragment {
             ImageView image = listItemView.findViewById(R.id.item_image);
             TextView pv = listItemView.findViewById(R.id.item_price);
 
-            PlantItem plantItem = plantlist.get(position);
+            if(plantlist!= null && plantlist.size() !=0) {
+                PlantItem plantItem = plantlist.get(position);
 
-            tv.setText(plantItem.getPlantName());
-            image.setImageURI(plantItem.getImage());
-            pv.setText(plantItem.getPrice());
-
+                tv.setText(plantItem.getPlantName());
+                image.setImageURI(plantItem.getImage());
+                pv.setText(plantItem.getPrice());
+            }
             return listItemView;
         }
     }
