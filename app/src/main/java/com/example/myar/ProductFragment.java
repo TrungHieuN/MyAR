@@ -27,7 +27,6 @@ import com.nex3z.notificationbadge.NotificationBadge;
 import java.util.ArrayList;
 import java.util.List;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
 
 
 public class ProductFragment extends Fragment {
@@ -38,12 +37,19 @@ public class ProductFragment extends Fragment {
     private ListView listView;
     private NotificationBadge badge;
 
+    /*    private String[] names = {"name1", "name2", "name3", "name4", "name5", "name6", "name7" };
+    private int[] images = {R.drawable.background, R.drawable.ic_launcher_background, R.drawable.background,
+            R.drawable.background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.background};
+    private String[] description ={"123", "456", "789", "1011", "abc", "3311", "31313"};
+    private String[] price ={"19,00 €", "20,50 €", "35,00 €", "44,19 €", "5,79 €", "89,99 €", "1,99 €"};
+*/
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("plantItem");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Plants");
         plantlist = new ArrayList<>();
 
         View view = inflater.inflate(R.layout.product_fragment, container, false);
@@ -72,7 +78,6 @@ public class ProductFragment extends Fragment {
         return view;
 
     }
-
     @Override
     public void onStart() {
         super.onStart();
@@ -92,7 +97,7 @@ public class ProductFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "Failed to read value.", databaseError.toException());
+             //   Log.w(TAG, "Failed to read value.", databaseError.toException());
             }
         });
     }

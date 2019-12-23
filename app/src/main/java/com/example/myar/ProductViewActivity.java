@@ -1,6 +1,7 @@
 package com.example.myar;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -41,8 +42,8 @@ public class ProductViewActivity extends FragmentActivity {
         String nameHolder = getIntent().getStringExtra("item Names");
         productName.setText(nameHolder);
 
-        int imageHolder = getIntent().getIntExtra("item Images", -1);
-        productImage.setImageResource(imageHolder);
+        Uri imageHolder = getIntent().getData();
+        productImage.setImageURI(imageHolder);
 
         String descHolder = getIntent().getStringExtra("item Desc");
         productDesc.setText(descHolder);
@@ -88,6 +89,7 @@ public class ProductViewActivity extends FragmentActivity {
             cartItem.name = productName.getText().toString();
             cartItem.description = productDesc.getText().toString();
             cartItem.price = productPrice.getText().toString();
+            cartItem.image = productImage.getResources().toString();
 
             MainActivity.cartRepository.insertToCart(cartItem);
             Log.d("MyAR", new Gson().toJson(cartItem));
