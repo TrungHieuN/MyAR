@@ -33,8 +33,6 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class ProductFragment extends Fragment {
 
-    private ArrayList<PlantItem> plantlist;
-    private ArrayAdapter <PlantItem> adapter;
     private ListView listView;
     private NotificationBadge badge;
 
@@ -50,12 +48,12 @@ public class ProductFragment extends Fragment {
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
 
-        plantlist = new ArrayList<>();
+        ArrayList<PlantItem> plantlist = new ArrayList<>();
 
-        adapter = new ArrayAdapter<>(getContext(), R.layout.layout_list_item, plantlist);
+        final ArrayAdapter <PlantItem> adapter = new ArrayAdapter<>(getContext(), R.layout.layout_list_item, plantlist);
 
         View view = inflater.inflate(R.layout.product_fragment, container, false);
-       // PlantAdapter plantAdapter = new PlantAdapter(getActivity(), plantlist);
+        PlantAdapter plantAdapter = new PlantAdapter(getActivity(), plantlist);
        // PlantAdapter.customadapter ca = plantAdapter.new customadapter();
         listView = view.findViewById(R.id.ItemListView);
         listView.setOnItemClickListener((parent, view1, position, id) -> {
@@ -77,13 +75,18 @@ public class ProductFragment extends Fragment {
         });
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference("Plants");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference databaseReference = database.getReference().child("Plants");
+        ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
               for (DataSnapshot plantSnapshot : dataSnapshot.getChildren()) {
-                    PlantItem plantItem = plantSnapshot.getValue(PlantItem.class);
-                    plantlist.add(plantItem);
+                  //  PlantItem plantItem = plantSnapshot.getValue(PlantItem.class);
+                    int id = plantSnapshot.child("id").getValue(Integer.class);
+                    String plantName = plantSnapshot.child("plantName").getValue(String.class);
+                    String description = plantSnapshot.child("description").getValue(String.class);
+                    String price = plantSnapshot.child("price").getValue(String.class);
+                    String image = plantSnapshot.child("image").getValue(String.class);
+                  //  plantlist.add(plantItem);
               }
                 listView.setAdapter(adapter);
             }
@@ -92,7 +95,8 @@ public class ProductFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.d(TAG, "Failed to read value.", databaseError.toException());
             }
-        });
+        };
+        databaseReference.addListenerForSingleValueEvent(eventListener);
         return view;
     }
 

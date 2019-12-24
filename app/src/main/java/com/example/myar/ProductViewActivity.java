@@ -89,7 +89,6 @@ public class ProductViewActivity extends FragmentActivity {
             cartItem.name = productName.getText().toString();
             cartItem.description = productDesc.getText().toString();
             cartItem.price = productPrice.getText().toString();
-            cartItem.image = productImage.getResources().toString();
 
             MainActivity.cartRepository.insertToCart(cartItem);
             Log.d("MyAR", new Gson().toJson(cartItem));
