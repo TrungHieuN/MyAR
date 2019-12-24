@@ -9,6 +9,16 @@ public class PlantItem{
     private String price;
     private Uri image;
 
+    public PlantItem(){}
+
+    public PlantItem(int id, String plantName, String description, String price, Uri image){
+        this.id = id;
+        this.plantName = plantName;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+    }
+
     public int getId() {
         return id;
     }

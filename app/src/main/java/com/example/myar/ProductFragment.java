@@ -2,6 +2,7 @@ package com.example.myar;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,10 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
+
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,15 +28,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.ArrayList;
-import java.util.List;
 
-
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class ProductFragment extends Fragment {
 
-    private DatabaseReference databaseReference;
-
-    private List<PlantItem> plantlist;
+    private ArrayList<PlantItem> plantlist;
+    private ArrayAdapter <PlantItem> adapter;
     private ListView listView;
     private NotificationBadge badge;
 
@@ -49,13 +50,14 @@ public class ProductFragment extends Fragment {
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Plants");
         plantlist = new ArrayList<>();
 
+        adapter = new ArrayAdapter<>(getContext(), R.layout.layout_list_item, plantlist);
+
         View view = inflater.inflate(R.layout.product_fragment, container, false);
+       // PlantAdapter plantAdapter = new PlantAdapter(getActivity(), plantlist);
+       // PlantAdapter.customadapter ca = plantAdapter.new customadapter();
         listView = view.findViewById(R.id.ItemListView);
-        PlantAdapter plantAdapter = new PlantAdapter(getActivity(), plantlist);
-        PlantAdapter.customadapter ca = plantAdapter.new customadapter();
         listView.setOnItemClickListener((parent, view1, position, id) -> {
 
             PlantItem plantItem = plantlist.get(position);
@@ -74,32 +76,24 @@ public class ProductFragment extends Fragment {
             ProductFragment.this.startActivity(intent);
         });
 
-        listView.setAdapter(ca);
-        return view;
-
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("Plants");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                plantlist.clear();
-                for (DataSnapshot plantSnapshot : dataSnapshot.getChildren()){
+              for (DataSnapshot plantSnapshot : dataSnapshot.getChildren()) {
                     PlantItem plantItem = plantSnapshot.getValue(PlantItem.class);
-
                     plantlist.add(plantItem);
-                }
-
-                PlantAdapter adapter = new PlantAdapter(getActivity(),plantlist);
+              }
                 listView.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-             //   Log.w(TAG, "Failed to read value.", databaseError.toException());
+                Log.d(TAG, "Failed to read value.", databaseError.toException());
             }
         });
+        return view;
     }
 
     @Override

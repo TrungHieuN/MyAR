@@ -19,12 +19,12 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
     private Activity activity;
     private List<PlantItem> plantlist;
 
-    PlantAdapter(@NonNull Activity activity, List<PlantItem> plantlist) {
+    public PlantAdapter(@NonNull Activity activity, List<PlantItem> plantlist) {
         super(activity, R.layout.layout_list_item, plantlist);
         this.activity = activity;
         this.plantlist = plantlist;
     }
-    public class customadapter extends BaseAdapter {
+/*    public class customadapter extends BaseAdapter {
 
         @Override
         public int getCount() {
@@ -40,7 +40,7 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
         public long getItemId(int arg0) {
             return 0;
         }
-
+*/
         @SuppressLint({"ViewHolder", "InflateParams"})
         @Override
         public View getView(final int position, View listItemView, ViewGroup parent) {
@@ -60,4 +60,4 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
             return listItemView;
         }
     }
-}
+
