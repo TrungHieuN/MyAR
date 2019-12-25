@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 class PlantAdapter extends ArrayAdapter<PlantItem> {
@@ -24,7 +26,8 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
         this.activity = activity;
         this.plantlist = plantlist;
     }
-/*    public class customadapter extends BaseAdapter {
+
+    public class customadapter extends BaseAdapter {
 
         @Override
         public int getCount() {
@@ -40,7 +43,7 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
         public long getItemId(int arg0) {
             return 0;
         }
-*/
+
         @SuppressLint({"ViewHolder", "InflateParams"})
         @Override
         public View getView(final int position, View listItemView, ViewGroup parent) {
@@ -52,12 +55,13 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
             ImageView image = listItemView.findViewById(R.id.item_image);
             TextView pv = listItemView.findViewById(R.id.item_price);
 
-                PlantItem plantItem = plantlist.get(position);
+            PlantItem plantItem = plantlist.get(position);
 
-                tv.setText(plantItem.getPlantName());
-                image.setImageURI(plantItem.getImage());
-                pv.setText(plantItem.getPrice());
+            tv.setText(plantItem.getPlantName());
+            Picasso.get().load(plantItem.getImage()).into(image);
+            pv.setText(plantItem.getPrice());
             return listItemView;
         }
     }
+}
 

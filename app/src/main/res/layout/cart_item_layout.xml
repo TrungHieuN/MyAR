@@ -19,7 +19,6 @@
            android:layout_marginRight="20dp"
            android:layout_centerVertical="true"
            android:layout_alignParentRight="true">
-
        </ImageView>
 
        <TextView
@@ -27,6 +26,7 @@
            android:layout_height="wrap_content"
            android:layout_toLeftOf="@id/delete_icon"
            android:text="DELETE"
+           android:textColor="@color/black"
            android:layout_centerVertical="true"
            android:layout_marginRight="5dp">
 

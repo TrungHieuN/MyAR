@@ -11,6 +11,7 @@ public class Cart  {
 
 @NonNull
     @PrimaryKey(autoGenerate = true)
+
     @ColumnInfo(name="id")
     public int id;
 

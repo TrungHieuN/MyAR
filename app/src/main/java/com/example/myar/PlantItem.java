@@ -7,11 +7,11 @@ public class PlantItem{
     private String plantName;
     private String description;
     private String price;
-    private Uri image;
+    private String image;
 
     public PlantItem(){}
 
-    public PlantItem(int id, String plantName, String description, String price, Uri image){
+    public PlantItem(int id, String plantName, String description, String price, String image){
         this.id = id;
         this.plantName = plantName;
         this.description = description;
@@ -52,10 +52,10 @@ public class PlantItem{
     }
 
     public Uri getImage() {
-        return image;
+        return Uri.parse(image);
     }
 
-    public void setImage(Uri image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

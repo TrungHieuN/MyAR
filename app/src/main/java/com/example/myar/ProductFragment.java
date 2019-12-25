@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
@@ -35,7 +36,9 @@ public class ProductFragment extends Fragment {
 
     private ListView listView;
     private NotificationBadge badge;
+    List<PlantItem> plantlist;
 
+    ArrayAdapter<PlantItem> adapter;
     /*    private String[] names = {"name1", "name2", "name3", "name4", "name5", "name6", "name7" };
     private int[] images = {R.drawable.background, R.drawable.ic_launcher_background, R.drawable.background,
             R.drawable.background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.background};
@@ -48,13 +51,11 @@ public class ProductFragment extends Fragment {
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
 
-        ArrayList<PlantItem> plantlist = new ArrayList<>();
-
-        final ArrayAdapter <PlantItem> adapter = new ArrayAdapter<>(getContext(), R.layout.layout_list_item, plantlist);
+        plantlist = new ArrayList<>();
 
         View view = inflater.inflate(R.layout.product_fragment, container, false);
         PlantAdapter plantAdapter = new PlantAdapter(getActivity(), plantlist);
-       // PlantAdapter.customadapter ca = plantAdapter.new customadapter();
+        PlantAdapter.customadapter ca = plantAdapter.new customadapter();
         listView = view.findViewById(R.id.ItemListView);
         listView.setOnItemClickListener((parent, view1, position, id) -> {
 
@@ -68,26 +69,30 @@ public class ProductFragment extends Fragment {
             Intent intent = new Intent(view1.getContext(), ProductViewActivity.class);
 
             intent.putExtra("item Names", nameItemListview);
-            intent.putExtra("item Images", imageItemListview);
+            intent.putExtra("item Images", imageItemListview.toString());
             intent.putExtra("item Desc", descItemListview);
             intent.putExtra("item Price", priceItemListview);
             ProductFragment.this.startActivity(intent);
+            listView.setAdapter(ca);
         });
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = database.getReference().child("Plants");
-        ValueEventListener eventListener = new ValueEventListener() {
+        DatabaseReference databaseReference = database.getReference("Plants");
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                plantlist.clear();
               for (DataSnapshot plantSnapshot : dataSnapshot.getChildren()) {
-                  //  PlantItem plantItem = plantSnapshot.getValue(PlantItem.class);
-                    int id = plantSnapshot.child("id").getValue(Integer.class);
-                    String plantName = plantSnapshot.child("plantName").getValue(String.class);
-                    String description = plantSnapshot.child("description").getValue(String.class);
-                    String price = plantSnapshot.child("price").getValue(String.class);
-                    String image = plantSnapshot.child("image").getValue(String.class);
-                  //  plantlist.add(plantItem);
+                   PlantItem plantItem = plantSnapshot.getValue(PlantItem.class);
+                /*   plantItem.getDescription();
+                   plantItem.getId();
+                   plantItem.getPlantName();
+                   plantItem.getImage();
+                   plantItem.getPrice(); */
+                   plantlist.add(plantItem);
               }
+
+                adapter = new ArrayAdapter<>(getContext(), R.layout.layout_list_item, R.id.item_name, plantlist);
                 listView.setAdapter(adapter);
             }
 
@@ -95,10 +100,11 @@ public class ProductFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.d(TAG, "Failed to read value.", databaseError.toException());
             }
-        };
-        databaseReference.addListenerForSingleValueEvent(eventListener);
+        });
+
         return view;
     }
+
 
     @Override
         public void onCreateOptionsMenu( Menu menu, MenuInflater inflater) {

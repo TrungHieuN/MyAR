@@ -19,6 +19,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.example.myar.RoomDatabase.ModelDB.Cart;
 import com.google.gson.*;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 
 public class ProductViewActivity extends FragmentActivity {
@@ -42,8 +44,8 @@ public class ProductViewActivity extends FragmentActivity {
         String nameHolder = getIntent().getStringExtra("item Names");
         productName.setText(nameHolder);
 
-        Uri imageHolder = getIntent().getData();
-        productImage.setImageURI(imageHolder);
+        String imageHolder = getIntent().getExtras().getString("item Images");
+        Picasso.get().load(imageHolder).into(productImage);
 
         String descHolder = getIntent().getStringExtra("item Desc");
         productDesc.setText(descHolder);
@@ -89,6 +91,7 @@ public class ProductViewActivity extends FragmentActivity {
             cartItem.name = productName.getText().toString();
             cartItem.description = productDesc.getText().toString();
             cartItem.price = productPrice.getText().toString();
+            Picasso.get().load(productImage.toString()).into((Target) Uri.parse(cartItem.image));
 
             MainActivity.cartRepository.insertToCart(cartItem);
             Log.d("MyAR", new Gson().toJson(cartItem));

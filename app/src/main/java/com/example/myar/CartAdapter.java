@@ -43,7 +43,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         holder.txt_amount.setNumber(String.valueOf(cartList.get(position).amount));
         holder.txt_product_name.setText(cartList.get(position).name);
-        holder.txt_price.setText(new StringBuilder("€").append(cartList.get(position).price));
+        holder.txt_price.setText(cartList.get(position).price);
 
         //Auto save item when user change amount
         holder.txt_amount.setOnValueChangeListener((view, oldValue, newValue) -> {
