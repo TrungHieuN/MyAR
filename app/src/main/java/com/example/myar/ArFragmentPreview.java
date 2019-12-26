@@ -105,5 +105,4 @@ public class ArFragmentPreview extends AppCompatActivity {
             }
         }
     }
-
 }
