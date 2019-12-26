@@ -73,7 +73,7 @@ public class ProductFragment extends Fragment {
             intent.putExtra("item Desc", descItemListview);
             intent.putExtra("item Price", priceItemListview);
             ProductFragment.this.startActivity(intent);
-            listView.setAdapter(ca);
+
         });
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -84,16 +84,11 @@ public class ProductFragment extends Fragment {
                 plantlist.clear();
               for (DataSnapshot plantSnapshot : dataSnapshot.getChildren()) {
                    PlantItem plantItem = plantSnapshot.getValue(PlantItem.class);
-                /*   plantItem.getDescription();
-                   plantItem.getId();
-                   plantItem.getPlantName();
-                   plantItem.getImage();
-                   plantItem.getPrice(); */
                    plantlist.add(plantItem);
               }
-
                 adapter = new ArrayAdapter<>(getContext(), R.layout.layout_list_item, R.id.item_name, plantlist);
                 listView.setAdapter(adapter);
+                listView.setAdapter(ca);
             }
 
             @Override
@@ -101,7 +96,6 @@ public class ProductFragment extends Fragment {
                 Log.d(TAG, "Failed to read value.", databaseError.toException());
             }
         });
-
         return view;
     }
 
@@ -120,7 +114,7 @@ public class ProductFragment extends Fragment {
         if(badge == null) return;
         getActivity().runOnUiThread(() -> {
             if (MainActivity.cartRepository.countItem() == 0)
-                badge.setVisibility(View.VISIBLE);
+                badge.setVisibility(View.INVISIBLE);
             else {
                 badge.setVisibility((View.VISIBLE));
                 badge.setText(String.valueOf(MainActivity.cartRepository.countItem()));

@@ -24,13 +24,16 @@
         android:layout_height="300dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:id="@+id/product_frame"
-        android:background="@drawable/my_border2">
+        android:id="@+id/product_frame">
 
-        <ImageView
+        <com.github.siyamed.shapeimageview.RoundedImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
+            app:siRadius="10dp"
+            app:siBorderWidth="4dp"
+            app:siBorderColor="@color/colorProductBackground"
+            app:siSquare="true"
             android:padding="10dp"
             android:scaleType="centerCrop"
             android:cropToPadding="true"
@@ -58,7 +61,8 @@
         android:layout_below="@id/product_name"
         android:layout_marginTop="20dp"
         android:layout_margin="30dp"
-        android:text="Description"
+        android:text="Descriptionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        android:textAlignment="center"
         android:id="@+id/product_description">
     </TextView>
 

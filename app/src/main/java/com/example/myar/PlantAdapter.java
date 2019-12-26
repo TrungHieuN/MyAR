@@ -58,7 +58,9 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
             PlantItem plantItem = plantlist.get(position);
 
             tv.setText(plantItem.getPlantName());
-            Picasso.get().load(plantItem.getImage()).into(image);
+            if (image != null){
+                Picasso.get().load(plantItem.getImage()).into(image);
+            }
             pv.setText(plantItem.getPrice());
             return listItemView;
         }

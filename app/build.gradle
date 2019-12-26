@@ -72,6 +72,8 @@ dependencies {
     implementation 'com.nex3z:notification-badge:1.0.2'
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+    //shape image view
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.3@aar'
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'

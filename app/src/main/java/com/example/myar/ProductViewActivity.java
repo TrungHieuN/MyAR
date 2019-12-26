@@ -1,6 +1,7 @@
 package com.example.myar;
 
 import android.content.Intent;
+
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -20,7 +21,9 @@ import androidx.fragment.app.FragmentActivity;
 import com.example.myar.RoomDatabase.ModelDB.Cart;
 import com.google.gson.*;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProductViewActivity extends FragmentActivity {
@@ -30,10 +33,14 @@ public class ProductViewActivity extends FragmentActivity {
     TextView productDesc;
     TextView productPrice;
 
+    List<PlantItem> plantlist;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productview);
+
+        plantlist = new ArrayList<>();
 
         productToolbar = findViewById(R.id.toolbarTop);
         productImage = findViewById(R.id.product_image);
@@ -89,9 +96,9 @@ public class ProductViewActivity extends FragmentActivity {
         try {
             Cart cartItem = new Cart();
             cartItem.name = productName.getText().toString();
-            cartItem.description = productDesc.getText().toString();
+          //  cartItem.description = productDesc.getText().toString();
             cartItem.price = productPrice.getText().toString();
-            Picasso.get().load(productImage.toString()).into((Target) Uri.parse(cartItem.image));
+            cartItem.image = productImage.getResources().toString();
 
             MainActivity.cartRepository.insertToCart(cartItem);
             Log.d("MyAR", new Gson().toJson(cartItem));
