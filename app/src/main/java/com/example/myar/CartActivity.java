@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -31,7 +32,6 @@ public class CartActivity extends AppCompatActivity implements RecyclerItemTouch
 
     private RelativeLayout rootLayout;
     private RecyclerView recycler_cart;
-    private Button checkoutButton;
     private CartAdapter cartAdapter;
     private CompositeDisposable compositeDisposable;
     private List<Cart> cartList = new ArrayList<>();
@@ -54,12 +54,14 @@ public class CartActivity extends AppCompatActivity implements RecyclerItemTouch
         recycler_cart.setLayoutManager(new LinearLayoutManager(this));
         recycler_cart.setHasFixedSize(true);
 
-        checkoutButton = findViewById(R.id.checkout_button);
-
         ItemTouchHelper.SimpleCallback simpleCallback = new RecycleItemTouchHelper(0, ItemTouchHelper.LEFT , this);
         new ItemTouchHelper(simpleCallback).attachToRecyclerView(recycler_cart);
 
         loadCartItems();
+
+        Button checkoutButton = findViewById(R.id.checkout_button);
+        checkoutButton.setOnClickListener(v -> Toast.makeText(getApplicationContext(), "Proceed to Checkout", Toast.LENGTH_SHORT)
+                .show());
 
         //backButton as arrow
         if (getSupportActionBar() != null) {

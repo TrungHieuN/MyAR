@@ -22,10 +22,6 @@ import com.example.myar.RoomDatabase.ModelDB.Cart;
 import com.google.gson.*;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class ProductViewActivity extends FragmentActivity {
     Toolbar productToolbar;
     ImageView productImage;
@@ -33,14 +29,12 @@ public class ProductViewActivity extends FragmentActivity {
     TextView productDesc;
     TextView productPrice;
 
-    List<PlantItem> plantlist;
+    String imageHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_productview);
-
-        plantlist = new ArrayList<>();
 
         productToolbar = findViewById(R.id.toolbarTop);
         productImage = findViewById(R.id.product_image);
@@ -51,7 +45,7 @@ public class ProductViewActivity extends FragmentActivity {
         String nameHolder = getIntent().getStringExtra("item Names");
         productName.setText(nameHolder);
 
-        String imageHolder = getIntent().getExtras().getString("item Images");
+        imageHolder = getIntent().getExtras().getString("item Images");
         Picasso.get().load(imageHolder).into(productImage);
 
         String descHolder = getIntent().getStringExtra("item Desc");
@@ -96,9 +90,10 @@ public class ProductViewActivity extends FragmentActivity {
         try {
             Cart cartItem = new Cart();
             cartItem.name = productName.getText().toString();
+            cartItem.amount = 1;
           //  cartItem.description = productDesc.getText().toString();
             cartItem.price = productPrice.getText().toString();
-            cartItem.image = productImage.getResources().toString();
+            cartItem.image = getIntent().getExtras().getString("item Images");
 
             MainActivity.cartRepository.insertToCart(cartItem);
             Log.d("MyAR", new Gson().toJson(cartItem));

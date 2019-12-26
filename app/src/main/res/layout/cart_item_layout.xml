@@ -38,7 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:backgroundTint="#9FB5CC"
         android:background="@drawable/my_border"
         android:id="@+id/cart_item_foreground"
         android:layout_margin="15dp">
@@ -92,8 +91,8 @@
                     app:textSize="6dp"
                     android:id="@+id/cart_item_amount"
                     android:layout_centerVertical="true"
-                    app:backGroundColor="#9FB5CC"
-                    app:textColor="@color/black">
+                    app:backGroundColor="#343B42"
+                    app:textColor="@color/white">
                 </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
 
             </RelativeLayout>
