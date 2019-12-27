@@ -61,6 +61,7 @@
         android:layout_below="@id/product_name"
         android:layout_marginTop="20dp"
         android:layout_margin="30dp"
+        android:textSize="17dp"
         android:text="Descriptionaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
         android:textAlignment="center"
         android:id="@+id/product_description">
@@ -86,7 +87,7 @@
                 android:layout_centerVertical="true"
                 android:text="19,50 €"
                 android:textStyle="italic"
-                android:textSize="15dp"
+                android:textSize="18dp"
                 android:textColor="@color/colorWhite"
                 android:scrollbarStyle="insideInset">
 
