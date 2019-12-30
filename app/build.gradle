@@ -75,6 +75,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     //shape image view
     implementation 'com.github.siyamed:android-shape-imageview:0.9.3@aar'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 }
 
 apply plugin: 'com.google.ar.sceneform.plugin'
@@ -86,7 +87,3 @@ sceneform.asset('sampledata/ArcticFox_Posed.obj',
         'sampledata/ArcticFox_Posed.sfa',
         'src/main/assets/ArcticFox_Posed')
 
-sceneform.asset('sampledata/10432_Aloe_Plant_v1_max2008_it2.obj',
-        'default',
-        'sampledata/10432_Aloe_Plant_v1_max2008_it2.sfa',
-        'src/main/assets/10432_Aloe_Plant_v1_max2008_it2')

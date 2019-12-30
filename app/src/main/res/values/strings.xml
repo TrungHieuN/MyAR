@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyAR</string>
+    <string name="app_name">PlantAR</string>
 
     <string name="title_activity_tab_layout">TabLayout</string>
     <string name="tab_text_1">Tab 1</string>
