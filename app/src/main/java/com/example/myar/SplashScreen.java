@@ -11,20 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity {
-    private TextView tv;
-    private ImageView iv;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        getWindow().setStatusBarColor(ContextCompat.getColor(SplashScreen.this, R.color.colorProductBackground));
+        getWindow().setStatusBarColor(ContextCompat.getColor(SplashScreen.this, R.color.colorSplash));
 
-        tv = findViewById(R.id.tv);
-        iv = findViewById(R.id.iv);
+        ImageView iv = findViewById(R.id.iv);
+
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.mytransition);
-        tv.startAnimation(myanim);
+
         iv.startAnimation(myanim);
         final Intent intent = new Intent(this, MainActivity.class);
         Thread timer = new Thread(){

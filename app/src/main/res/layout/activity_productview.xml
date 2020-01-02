@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/app_background"
     tools:context="com.example.myar.MainActivity">
 
     <Toolbar
@@ -15,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:titleTextColor="@color/colorWhite"
         android:background="@drawable/side_nav_bar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
     </Toolbar>

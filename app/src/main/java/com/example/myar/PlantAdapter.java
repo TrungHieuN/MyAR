@@ -22,7 +22,7 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
     private List<PlantItem> plantlist;
 
     public PlantAdapter(@NonNull Activity activity, List<PlantItem> plantlist) {
-        super(activity, R.layout.layout_list_item, plantlist);
+        super(activity, R.layout.product_item_layout, plantlist);
         this.activity = activity;
         this.plantlist = plantlist;
     }
@@ -49,7 +49,7 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
         public View getView(final int position, View listItemView, ViewGroup parent) {
 
             LayoutInflater inflater = activity.getLayoutInflater();
-            listItemView = inflater.inflate(R.layout.layout_list_item, null, true);
+            listItemView = inflater.inflate(R.layout.product_item_layout, null, true);
 
             TextView tv = listItemView.findViewById(R.id.item_name);
             ImageView image = listItemView.findViewById(R.id.item_image);

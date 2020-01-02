@@ -59,6 +59,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
 
+    //Number button
     implementation 'com.cepheuen.elegant-number-button:lib:1.0.3'
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'

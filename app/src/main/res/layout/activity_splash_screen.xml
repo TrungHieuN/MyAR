@@ -5,32 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorProductBackground"
+    android:background="@drawable/welcome_screen"
     tools:context=".SplashScreen">
 
-    <LinearLayout
-        android:gravity="center"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv"
+            android:layout_width="227dp"
+            android:layout_height="81dp"
             android:src="@drawable/applogo"
-            android:layout_width="306dp"
-            android:layout_height="94dp"
-            android:layout_gravity="center" />
+            android:layout_marginTop="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"/>
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Welcome"
-            android:textColor="@color/colorWhite"
-            android:textSize="12pt"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

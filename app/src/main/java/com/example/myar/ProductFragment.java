@@ -2,7 +2,6 @@ package com.example.myar;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,8 +39,8 @@ public class ProductFragment extends Fragment {
 
     ArrayAdapter<PlantItem> adapter;
     /*    private String[] names = {"name1", "name2", "name3", "name4", "name5", "name6", "name7" };
-    private int[] images = {R.drawable.background, R.drawable.ic_launcher_background, R.drawable.background,
-            R.drawable.background, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.background};
+    private int[] images = {R.drawable.roses, R.drawable.ic_launcher_background, R.drawable.roses,
+            R.drawable.roses, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.roses};
     private String[] description ={"123", "456", "789", "1011", "abc", "3311", "31313"};
     private String[] price ={"19,00 €", "20,50 €", "35,00 €", "44,19 €", "5,79 €", "89,99 €", "1,99 €"};
 */
@@ -86,7 +85,7 @@ public class ProductFragment extends Fragment {
                    PlantItem plantItem = plantSnapshot.getValue(PlantItem.class);
                    plantlist.add(plantItem);
               }
-                adapter = new ArrayAdapter<>(getContext(), R.layout.layout_list_item, R.id.item_name, plantlist);
+                adapter = new ArrayAdapter<>(getContext(), R.layout.product_item_layout, R.id.item_name, plantlist);
                 listView.setAdapter(adapter);
                 listView.setAdapter(ca);
             }
