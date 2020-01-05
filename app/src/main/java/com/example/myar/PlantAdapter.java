@@ -51,17 +51,17 @@ class PlantAdapter extends ArrayAdapter<PlantItem> {
             LayoutInflater inflater = activity.getLayoutInflater();
             listItemView = inflater.inflate(R.layout.product_item_layout, null, true);
 
-            TextView tv = listItemView.findViewById(R.id.item_name);
-            ImageView image = listItemView.findViewById(R.id.item_image);
-            TextView pv = listItemView.findViewById(R.id.item_price);
+            TextView item_name = listItemView.findViewById(R.id.item_name);
+            ImageView item_image = listItemView.findViewById(R.id.item_image);
+            TextView item_price = listItemView.findViewById(R.id.item_price);
 
             PlantItem plantItem = plantlist.get(position);
 
-            tv.setText(plantItem.getPlantName());
-            if (image != null){
-                Picasso.get().load(plantItem.getImage()).into(image);
+            item_name.setText(plantItem.getPlantName());
+            if (item_image != null){
+                Picasso.get().load(plantItem.getImage()).into(item_image);
             }
-            pv.setText(plantItem.getPrice());
+            item_price.setText(plantItem.getPrice());
             return listItemView;
         }
     }

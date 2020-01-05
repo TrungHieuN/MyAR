@@ -14,7 +14,6 @@ import com.example.myar.RoomDatabase.ModelDB.Cart;
 
 public abstract class CartDatabase extends RoomDatabase {
 
-
     public abstract  CartDAO cartDAO();
     private static CartDatabase instance;
 
@@ -24,6 +23,6 @@ public abstract class CartDatabase extends RoomDatabase {
                     .allowMainThreadQueries()
                     .build();
         return instance;
-
     }
 }
+

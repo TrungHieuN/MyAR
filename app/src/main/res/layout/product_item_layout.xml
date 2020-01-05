@@ -39,14 +39,4 @@
         android:textColor="#49535E"
         android:textSize="15sp" />
 
-   <!-- <Button
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:id="@+id/item_plus"
-        android:roses="@drawable/plus"
-        android:layout_centerVertical="true"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_toLeftOf="@id/item_price">
-    </Button> -->
-
 </RelativeLayout>

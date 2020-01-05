@@ -1,0 +1,80 @@
+# 3ds Max Wavefront OBJ Exporter v0.94b - (c)2007 guruware
+# File Created: 07.02.2018 19:31:51
+
+newmtl bark
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka bark_b_d.jpg
+	map_Kd bark_b_d.jpg
+	map_bump bark_b_b.jpg
+	bump bark_b_b.jpg
+
+newmtl leaf
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka b_leaf_d.jpg
+	map_Kd b_leaf_d.jpg
+	map_bump b_leaf_b.jpg
+	bump b_leaf_b.jpg
+
+newmtl leaf02
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka b_leaf_d.jpg
+	map_Kd b_leaf_d.jpg
+	map_bump b_leaf_b.jpg
+	bump b_leaf_b.jpg
+
+newmtl groud
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\3DMAX\3ddd\chebbi_set\ground.jpg
+	map_Kd D:\3DMAX\3ddd\chebbi_set\ground.jpg
+	map_bump D:\3DMAX\3ddd\chebbi_set\ground_bump.jpg
+	bump D:\3DMAX\3ddd\chebbi_set\ground_bump.jpg
+
+newmtl stone_black
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 1.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\3DMAX\3ddd\planter_group\stone_black.jpg
+	map_Kd D:\3DMAX\3ddd\planter_group\stone_black.jpg

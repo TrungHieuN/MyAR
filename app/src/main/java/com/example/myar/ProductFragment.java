@@ -38,12 +38,6 @@ public class ProductFragment extends Fragment {
     List<PlantItem> plantlist;
 
     ArrayAdapter<PlantItem> adapter;
-    /*    private String[] names = {"name1", "name2", "name3", "name4", "name5", "name6", "name7" };
-    private int[] images = {R.drawable.roses, R.drawable.ic_launcher_background, R.drawable.roses,
-            R.drawable.roses, R.drawable.ic_launcher_background, R.drawable.ic_launcher_background, R.drawable.roses};
-    private String[] description ={"123", "456", "789", "1011", "abc", "3311", "31313"};
-    private String[] price ={"19,00 €", "20,50 €", "35,00 €", "44,19 €", "5,79 €", "89,99 €", "1,99 €"};
-*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,7 +79,8 @@ public class ProductFragment extends Fragment {
                    PlantItem plantItem = plantSnapshot.getValue(PlantItem.class);
                    plantlist.add(plantItem);
               }
-                adapter = new ArrayAdapter<>(getContext(), R.layout.product_item_layout, R.id.item_name, plantlist);
+                adapter = new ArrayAdapter<>(getContext(), R.layout.product_item_layout,
+                                                R.id.item_name, plantlist);
                 listView.setAdapter(adapter);
                 listView.setAdapter(ca);
             }
@@ -105,7 +100,8 @@ public class ProductFragment extends Fragment {
         View view = menu.findItem(R.id.action_cart).getActionView();;
         badge = view.findViewById(R.id.badge);
         ImageView cart_icon = view.findViewById(R.id.cart_icon);
-        cart_icon.setOnClickListener(v -> startActivity(new Intent (getContext(), CartActivity.class)));
+        cart_icon.setOnClickListener(v -> startActivity(new Intent(
+                               getContext(), CartActivity.class)));
         updateCartCount();
     }
 

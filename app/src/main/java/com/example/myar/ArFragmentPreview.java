@@ -37,14 +37,14 @@ public class ArFragmentPreview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arpreview_layout);
+        setContentView(R.layout.arpreview_activity);
         arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);
         arFragment.setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
 
             //Renderable mode in AR app
 
             ModelRenderable.builder()
-                    .setSource(this, Uri.parse("ArcticFox_Posed.sfb"))
+                    .setSource(this, Uri.parse("boxwood_plant.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(modelRenderable, hitResult, planeType))
                     .exceptionally(throwable -> {
@@ -69,21 +69,18 @@ public class ArFragmentPreview extends AppCompatActivity {
         AnchorNode anchorNode = new AnchorNode(anchor);
         anchorNode.setParent(arFragment.getArSceneView().getScene());
 
-        Vector3 size = ((Box) modelRenderable.getCollisionShape()).getSize();
-
         TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
         transformableNode.setParent(anchorNode);
         arFragment.getArSceneView().getScene().addChild(anchorNode);
 
         if (planeType == Plane.Type.HORIZONTAL_DOWNWARD_FACING) {
             transformableNode.setParent(transformableNode);
-            transformableNode.setLocalPosition(new Vector3(0, size.y, 0));
+            transformableNode.setLocalPosition(new Vector3(0, 1, 0));
             transformableNode.setLocalRotation(new Quaternion(0, 0, 1, 0));
             transformableNode.setRenderable(modelRenderable);
             transformableNode.select();
         } else if (planeType == Plane.Type.VERTICAL) {
             transformableNode.setParent(transformableNode);
-            //transformableNode.setLookDirection(new Vector3(0,0,0));
             transformableNode.setRenderable(modelRenderable);
             transformableNode.select();
         } else {

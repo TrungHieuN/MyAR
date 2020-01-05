@@ -12,7 +12,6 @@ import com.example.myar.RoomDatabase.Local.CartDataSource;
 import com.example.myar.RoomDatabase.Local.CartDatabase;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity);
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.app_name));
@@ -88,6 +87,4 @@ public class MainActivity extends AppCompatActivity {
         cartDatabase = CartDatabase.getInstance(this);
         cartRepository = CartRepository.getInstance(CartDataSource.getInstance(cartDatabase.cartDAO()));
     }
-
-
 }

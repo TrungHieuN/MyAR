@@ -29,5 +29,6 @@ public class Cart  {
 
     @ColumnInfo(name="Price")
     public String price;
-
 }
+
+

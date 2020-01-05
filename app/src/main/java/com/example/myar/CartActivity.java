@@ -72,10 +72,11 @@ public class CartActivity extends AppCompatActivity implements RecyclerItemTouch
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // handle arrow click here
+
         if (item.getItemId() == android.R.id.home) {
             finish();
-            return true;// close this activity and return to preview activity (if there is any)
+            return true;// close this activity and
+                        // return to previous activity
         }
         return super.onOptionsItemSelected(item);
     }
@@ -127,7 +128,8 @@ public class CartActivity extends AppCompatActivity implements RecyclerItemTouch
             //Delete Item from Room database
             MainActivity.cartRepository.deleteCartItem(deletedItem);
 
-            Snackbar snackbar = make(rootLayout, name + " removed from Cart List", Snackbar.LENGTH_LONG);
+            Snackbar snackbar = make(rootLayout, name + " removed from Cart List",
+                                        Snackbar.LENGTH_LONG);
             snackbar.setAction("UNDO", v -> {
                 cartAdapter.restoreItem(deletedItem, deletedIndex);
                 MainActivity.cartRepository.insertToCart(deletedItem);

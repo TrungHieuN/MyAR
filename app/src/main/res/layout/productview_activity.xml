@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/app_background"
+    tools:context="com.example.myar.MainActivity">
+
+    <Toolbar
+        android:id="@+id/toolbarTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:titleTextColor="@color/colorWhite"
+        android:background="@drawable/side_nav_bar2"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+    </Toolbar>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:id="@+id/product_frame">
+
+        <com.github.siyamed.shapeimageview.RoundedImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:siRadius="10dp"
+            app:siBorderWidth="4dp"
+            app:siBorderColor="@color/colorProductBackground"
+            app:siSquare="true"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
+            android:cropToPadding="true"
+            android:id="@+id/product_image"
+            android:src="@drawable/my_border" />
+    </RelativeLayout>
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/product_frame"
+        android:layout_marginTop="20dp"
+        android:text="Product Name"
+        android:id="@+id/product_name">
+    </TextView>
+
+    <TextView
+        android:textStyle="italic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/product_name"
+        android:layout_marginTop="20dp"
+        android:layout_margin="30dp"
+        android:textSize="17sp"
+        android:text="Here contains the description
+        of the product. It presents the detail of product
+        listed from the ListView item list."
+        android:textAlignment="center"
+        android:id="@+id/product_description">
+    </TextView>
+
+
+    <Toolbar
+        android:id="@+id/toolbarBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/side_nav_bar2"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="19,50 €"
+                android:textStyle="italic"
+                android:textSize="18dp"
+                android:textColor="@color/colorWhite"
+                android:scrollbarStyle="insideInset">
+             </TextView>
+
+            <Button
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="85dp"
+                android:text="Preview"
+                android:textSize="12dp"
+                android:id="@+id/previewButton"
+                android:layout_centerVertical="true">
+            </Button>
+
+            <Button
+                android:id="@+id/addToCartButton"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="85dp"
+                android:text="Add to cart"
+                android:textSize="10dp">
+
+            </Button>
+        </RelativeLayout>
+    </Toolbar>
+</RelativeLayout>
+

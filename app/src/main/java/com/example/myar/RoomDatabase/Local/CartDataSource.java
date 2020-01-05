@@ -25,7 +25,6 @@ public class CartDataSource implements ICartDataSource {
     @Override
     public Flowable<List<Cart>> getCartItem() {
         return cartDAO.getCartItem();
-
     }
 
     @Override
@@ -58,3 +57,4 @@ public class CartDataSource implements ICartDataSource {
         cartDAO.deleteCartItem(cart);
     }
 }
+
