@@ -46,7 +46,8 @@ public class ArFragmentPreview extends AppCompatActivity {
             ModelRenderable.builder()
                     .setSource(this, Uri.parse("boxwood_plant.sfb"))
                     .build()
-                    .thenAccept(modelRenderable -> addModelToScene(modelRenderable, hitResult, planeType))
+                    .thenAccept(modelRenderable -> addModelToScene(modelRenderable,
+                                hitResult, planeType))
                     .exceptionally(throwable -> {
                         Toast toast = Toast.makeText(this, "Unable to load andy renderable", Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER, 0, 0);
