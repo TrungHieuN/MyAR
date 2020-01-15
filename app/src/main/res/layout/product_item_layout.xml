@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="5dp"
     android:layout_margin="20dp"
     android:id="@+id/parent_layout"
     android:background="@drawable/my_border">
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -14,7 +14,6 @@
         android:layout_marginLeft="5dp"
         android:padding="5dp"
         android:src="@mipmap/ic_launcher"/>
-
     <TextView
         android:id="@+id/item_name"
         android:layout_width="wrap_content"
@@ -26,7 +25,6 @@
         android:textColor="#49535E"
         android:textStyle="bold"
         android:textSize="17sp" />
-
     <TextView
         android:id="@+id/item_price"
         android:layout_width="wrap_content"
@@ -38,5 +36,6 @@
         android:text="20 €"
         android:textColor="#49535E"
         android:textSize="15sp" />
-
 </RelativeLayout>
+
+
