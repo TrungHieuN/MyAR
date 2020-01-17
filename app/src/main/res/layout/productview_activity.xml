@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="??? €"
+                android:text="20 €"
                 android:textStyle="italic"
                 android:textSize="18dp"
                 android:textColor="@color/colorWhite"
