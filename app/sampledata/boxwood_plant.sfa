@@ -1,0 +1,179 @@
+{
+  materials: [
+    {
+      name: 'bark',
+      parameters: [
+        {
+          baseColor: 'bark_b_d',
+        },
+        {
+          baseColorTint: [
+            0.58799999999999997,
+            0.58799999999999997,
+            0.58799999999999997,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.408248,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'leaf',
+      parameters: [
+        {
+          baseColor: 'b_leaf_d',
+        },
+        {
+          baseColorTint: [
+            0.58799999999999997,
+            0.58799999999999997,
+            0.58799999999999997,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.408248,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'groud',
+      parameters: [
+        {
+          baseColor: 'ground',
+        },
+        {
+          baseColorTint: [
+            0.58799999999999997,
+            0.58799999999999997,
+            0.58799999999999997,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.408248,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+    {
+      name: 'stone_black',
+      parameters: [
+        {
+          baseColor: 'stone_black',
+        },
+        {
+          baseColorTint: [
+            0.58799999999999997,
+            0.58799999999999997,
+            0.58799999999999997,
+            1,
+          ],
+        },
+        {
+          metallic: 1,
+        },
+        {
+          roughness: 0.408248,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/obj_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/boxwood_plant.obj',
+    name: 'boxwood_plant',
+    recenter: 'root',
+    scale: 0.0024250000000000001,
+  },
+  samplers: [
+    {
+      file: 'sampledata\\b_leaf_d.jpg',
+      name: 'b_leaf_d',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'b_leaf_d.jpg',
+    },
+    {
+      file: 'sampledata\\bark_b_d.jpg',
+      name: 'bark_b_d',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'bark_b_d.jpg',
+    },
+    {
+      file: 'sampledata\\b_leaf_b.jpg',
+      name: 'b_leaf_b',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'b_leaf_b.jpg',
+    },
+    {
+      file: 'sampledata\\bark_b_b.jpg',
+      name: 'bark_b_b',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'bark_b_b.jpg',
+    },
+    {
+      file: 'sampledata\\ground.jpg',
+      name: 'ground',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'D:\\3DMAX\\3ddd\\chebbi_set\\ground.jpg',
+    },
+    {
+      file: 'sampledata\\ground_bump.jpg',
+      name: 'ground_bump',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'D:\\3DMAX\\3ddd\\chebbi_set\\ground_bump.jpg',
+    },
+    {
+      file: 'sampledata\\stone_black.jpg',
+      name: 'stone_black',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: 'D:\\3DMAX\\3ddd\\planter_group\\stone_black.jpg',
+    },
+  ],
+  version: '0.54:2',
+}
