@@ -79,15 +79,13 @@ public class ArFragmentPreview extends AppCompatActivity {
             transformableNode.setLocalPosition(new Vector3(0, 1, 0));
             transformableNode.setLocalRotation(new Quaternion(0, 0, 1, 0));
             transformableNode.setRenderable(modelRenderable);
-            transformableNode.select();
         } else if (planeType == Plane.Type.VERTICAL) {
             transformableNode.setParent(transformableNode);
             transformableNode.setRenderable(modelRenderable);
-            transformableNode.select();
         } else {
             transformableNode.setRenderable(modelRenderable);
-            transformableNode.select();
         }
+        transformableNode.select();
     }
 
     private void onClear() {

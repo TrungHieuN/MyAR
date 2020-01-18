@@ -89,11 +89,6 @@ apply plugin: 'com.google.ar.sceneform.plugin'
 apply plugin: 'com.google.gms.google-services'
 
 
-sceneform.asset('sampledata/10432_Aloe_Plant_v1_max2008_it2.obj',
-        'default',
-        'sampledata/10432_Aloe_Plant_v1_max2008_it2.sfa',
-        'src/main/assets/10432_Aloe_Plant_v1_max2008_it2')
-
 sceneform.asset('sampledata/boxwood_plant.obj',
         'default',
         'sampledata/boxwood_plant.sfa',

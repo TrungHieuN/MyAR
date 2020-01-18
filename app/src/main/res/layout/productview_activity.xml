@@ -64,9 +64,7 @@
         android:layout_marginTop="20dp"
         android:layout_margin="30dp"
         android:textSize="17sp"
-        android:text="Here contains the description
-        of the product. It presents the detail of product
-        listed from the ListView item list."
+        android:text="Here contains the description of the product. It presents the detail of product listed from the ListView item list."
         android:textAlignment="center"
         android:id="@+id/product_description">
     </TextView>
@@ -89,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="19,50 €"
+                android:text="20 €"
                 android:textStyle="italic"
                 android:textSize="18dp"
                 android:textColor="@color/colorWhite"
