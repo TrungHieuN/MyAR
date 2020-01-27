@@ -44,12 +44,12 @@ public class ArFragmentPreview extends AppCompatActivity {
             //Renderable mode in AR app
 
             ModelRenderable.builder()
-                    .setSource(this, Uri.parse("boxwood_plant.sfb"))
+                    .setSource(this, Uri.parse("FiddleleafFigPottedPlant.sfb"))
                     .build()
                     .thenAccept(modelRenderable -> addModelToScene(modelRenderable,
                                 hitResult, planeType))
                     .exceptionally(throwable -> {
-                        Toast toast = Toast.makeText(this, "Unable to load andy renderable", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(this, "Unable to load any renderable", Toast.LENGTH_LONG);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                         return null;
@@ -84,8 +84,9 @@ public class ArFragmentPreview extends AppCompatActivity {
             transformableNode.setRenderable(modelRenderable);
         } else {
             transformableNode.setRenderable(modelRenderable);
+            transformableNode.select();
         }
-        transformableNode.select();
+
     }
 
     private void onClear() {
