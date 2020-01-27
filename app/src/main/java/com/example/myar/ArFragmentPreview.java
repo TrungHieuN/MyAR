@@ -21,6 +21,7 @@ import com.google.ar.sceneform.Sun;
 import com.google.ar.sceneform.math.Quaternion;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
+import com.google.ar.sceneform.ux.PlaneDiscoveryController;
 import com.google.ar.sceneform.ux.TransformableNode;
 
 import java.util.ArrayList;
@@ -39,6 +40,8 @@ public class ArFragmentPreview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.arpreview_activity);
         arFragment = (ArFragment)getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        arFragment.getPlaneDiscoveryController().hide();
+        arFragment.getPlaneDiscoveryController().setInstructionView(null);
         arFragment.setOnTapArPlaneListener((HitResult hitResult, Plane plane, MotionEvent motionEvent) -> {
 
             //Renderable mode in AR app
