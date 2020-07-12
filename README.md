@@ -5,6 +5,7 @@
 PlantAR is a combination of a online shop and Augmented Reality for further using experience. The products can be anything available for e-commerce that possibly has interaction in real-time with real environment to help bring better using experience. In this project, plants and flowers are my main products. 
 
 *This is just a prototype from my bachelor thesis.
+
 Demo App Preview: https://1drv.ms/v/s!AuWUZs9jkL9jlJR1X-p-IIvxarm3Bw?e=UQ9aDY
 
 ## Developing Platforms
