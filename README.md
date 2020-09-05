@@ -32,3 +32,5 @@ In this prototype, only one 3D object is used and stored in local database of An
 - Devices: Android Smartphone with ARCore Supported: https://developers.google.com/ar/discover/supported-devices.
 - Google Playstore: Google Play Services for AR is required for installation.
 
+### License
+Copyright (c) 2020, TrungHieuN All rights reserved.
