@@ -33,4 +33,4 @@ In this prototype, only one 3D object is used and stored in local database of An
 - Google Playstore: Google Play Services for AR is required for installation.
 
 ### License
-Copyright (c) 2020, TrungHieuN All rights reserved.
+Copyright (c) 2020, Trung Hieu Nguyen. All rights reserved.
