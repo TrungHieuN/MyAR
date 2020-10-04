@@ -34,3 +34,4 @@ In this prototype, only one 3D object is used and stored in local database of An
 
 ### License
 Copyright (c) 2020, Trung Hieu Nguyen. All rights reserved.
+Contact per my email: nguyentrunghieu1495@gmail.com
