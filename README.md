@@ -6,7 +6,7 @@ PlantAR is a combination of a online shop and Augmented Reality for further usin
 
 *This is just a prototype from my bachelor thesis.
 
-Demo App Preview: https://1drv.ms/v/s!AuWUZs9jkL9jlJR1X-p-IIvxarm3Bw?e=UQ9aDY
+Demo App Preview (Demo Video only): https://1drv.ms/v/s!AuWUZs9jkL9jlJR1X-p-IIvxarm3Bw?e=UQ9aDY
 
 ## Developing Platforms
 * Frontend & Backend: Android Studio & Photoshop
